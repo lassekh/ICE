@@ -4,7 +4,7 @@ Vi er en nystartet virksomhed der gerne vil løse andre virksomheders udfordring
 
 Vi vil gerne lave et **system** der kan læse CSV-filer og gemme dataen på en overskuelig måde. Når dataen er gemt skal kunden nemt kunne få et overblik over relevante nøgletal i et **dashboard**.
 
-Man skal kunne logge ind som bruger/kunde i systemet, uploade en CSV-fil fyldt med ordrer der efterfølgende bliver tilføjet til en database. Herefter skal kunden kunne få et overblik over nøgletal om ordrerne der er tilføjet til databasen - herunder antal salg, total indtjening, bedst sælgende produkter (inkl. total salg og indtjening), samlet antal ordrer og samlet mængde penge brugt.
+Man skal kunne logge ind som bruger/kunde i systemet og vælge at uploade en CSV-fil eller få et overblik over nøgletal for data. Bliver der uploadet et datasæt skal det gemmes på en hensigtmæssig måde der gør det nemt at søge i data. Man skal kunne søge i data og blandt andet få et overblik over nøgletal om ordrerne der er tilføjet til databasen - herunder antal salg, total indtjening, bedst sælgende produkter (inkl. total salg og indtjening), samlet antal ordrer og samlet mængde penge brugt.
 
 Når CSV-filerne er tilføjet skal de efterfølgende gemmes lokalt, så de altid kan læses igen.
 
