@@ -1,17 +1,14 @@
 # ICE - Projektbeskrivelse
 ## Hvad er det vi gerne vil bygge?
-Vi vil gerne lave et **system** der kan læse CSV-filer og gemme dataen på en overskuelig måde. Når dataen er gemt skal kunden nemt kunne få et overblik over relevante nøgletal i et **dashboard**.
-## Til hvem?
-En kunde der dagligt har brug for at få indlæst en stor CSV-fil ind i en database, samt få et overblik over dataen.
-## Hvorfor?
-For at udfordre os selv med et problem fra den virkelige verden.
+Vi er en nystartet virksomhed der gerne vil løse andre virksomheders udfordringer med at håndtere store datasæt fra CSV-filer.
 
-## Funktionelle krav
+Vi vil gerne lave et **system** der kan læse CSV-filer og gemme dataen på en overskuelig måde. Når dataen er gemt skal kunden nemt kunne få et overblik over relevante nøgletal i et **dashboard**.
+
 Man skal kunne logge ind som bruger/kunde i systemet, uploade en CSV-fil fyldt med ordrer der efterfølgende bliver tilføjet til en database. Herefter skal kunden kunne få et overblik over nøgletal om ordrerne der er tilføjet til databasen - herunder antal salg, total indtjening, bedst sælgende produkter (inkl. total salg og indtjening), samlet antal ordrer og samlet mængde penge brugt.
 
 Når CSV-filerne er tilføjet skal de efterfølgende gemmes lokalt, så de altid kan læses igen.
 
-Filerne skal indlæses hurtigt og effektivt til databasen og omvendt kunne hentes igen hurtigt og effektivt. Hvis der er fejl i CSV-filerne skal der gives besked om dette, og så er det kundens opgave at rette det.
+Kunden kan modtage en CSV-fil dagligt eller sjældnere, hvorfor filerne skal indlæses hurtigt og effektivt til databasen og omvendt kunne hentes igen hurtigt og effektivt. Hvis der er fejl i CSV-filerne skal der gives besked om dette, og så er det kundens opgave at rette det.
 
 ## Objektanalyse
 - 
