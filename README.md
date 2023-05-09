@@ -1,6 +1,6 @@
 # ICE - Projektbeskrivelse
 ## Hvad er det vi gerne vil bygge?
-Vi vil gerne lave et system der kan læse CSV-filer og skrive til en database for en kunde. Det skal også kunne hente og behandle data fra databasen, og give kunden nøgletal i et dashboard.
+Vi vil gerne lave et *system* der kan læse CSV-filer og skrive til en *database* for en *kunde*. Det skal også kunne hente og behandle data fra databasen, og give kunden nøgletal i et dashboard.
 ## Til hvem?
 En kunde der dagligt har brug for at få indlæst en stor CSV-fil ind i en database, samt få et overblik over dataen.
 ## Hvorfor?
