@@ -1,27 +1,29 @@
 @startuml
 'https://plantuml.com/class-diagram
+!pragma layout smetana
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+class Application
+class User
+class Food
+class HouseHold
+class Diet
+class MainMenu
+class MealPlan
+'class Family
+'class Database
+class Recipe
+class Weeks
+'class Recommendation
+class GroceryList
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
-}
-
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
-}
+Application *-- MainMenu
+MainMenu *-- User
+User <|-- HouseHold
+Recipe *-- Food
+MealPlan *-- Diet
+Diet *-- Recipe
+Weeks *-- MealPlan
+Application *-- Weeks
+MealPlan *-- GroceryList
 
 @enduml

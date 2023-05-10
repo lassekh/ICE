@@ -1,27 +1,21 @@
 @startuml
 'https://plantuml.com/class-diagram
+!pragma layout smetana
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+Package Client{
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+Package Entity{
+class HouseHold
+class User
+class MainMenu
 }
 
+Package Utility{
+}
+
+'Label on relations
+
+HouseHold "1" *-- User: has "*"
 @enduml
