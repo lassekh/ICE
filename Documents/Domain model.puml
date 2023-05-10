@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+!pragma layout smetana
+
+class Application
+class User
+class Food
+class HouseHold
+class Diet
+class MainMenu
+class MealPlan
+'class Family
+'class Database
+class Recipe
+class Weeks
+'class Recommendation
+class GroceryList
+
+Application *-- MainMenu
+MainMenu *-- User
+User <|-- HouseHold
+Recipe *-- Food
+MealPlan *-- Diet
+Diet *-- Recipe
+Weeks *-- MealPlan
+Application *-- Weeks
+MealPlan *-- GroceryList
+
+@enduml
