@@ -2,20 +2,38 @@
 'https://plantuml.com/class-diagram
 !pragma layout smetana
 
-Package Client{
-
-}
-
-Package Entity{
-class HouseHold
+Package User{
 class User
-class MainMenu
+class HouseHold
+class UserHandler
 }
+
+Package Mealplan{
+class Mealplan
+class Recipe
+class Food
+class Grocerylist
+}
+
+Package Filters{
+class Diet
+class Recommendation
+class FoodHandler
+}
+
+
 
 Package Utility{
+class IO
+class UI
+interface DBConnector
+class DBUser
+class DBRecipe
+class DBFood
 }
 
 'Label on relations
-
-HouseHold "1" *-- User: has "*"
+DBConnector <|-- DBUser
+DBConnector <|-- DBRecipe
+DBConnector <|-- DBFood
 @enduml
