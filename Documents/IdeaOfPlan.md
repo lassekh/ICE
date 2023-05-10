@@ -1,8 +1,8 @@
-## Hvad er det vi gerne vil bygge?
-Kunden ønsker en madplan-applikation som kan planlægge en madplan-forbrugeren, lave en indkøbsliste baseret på valg af opskrifter. Måltiderne som applikationen foreslår skal læses fra en database. Applikationen skal også kunne modtage en ny opskrift fra brugeren og gemme den ind i databasen.
+## What is it that we want to build?
+The client wants a meal planning application that can plan a meal schedule for the user, generate a shopping list based on recipe choices. The meals suggested by the application should be retrieved from a database. The application should also be able to receive a new recipe from the user and save it into the database.
 
-## Til hvem?
-Applikationen henvender sig til familier eller andre individer som ønsker forslag samt planlægning af madplan for ugen/måneden. Ydermere henvender den sig til et publikum, som ønsker en struktureret indkøbsliste for at sikre de nødvendige ingredienser til en madplan.
+## For whom?
+The application is intended for families or individuals who want suggestions and meal planning for the week/month. Additionally, it caters to an audience that wants a structured shopping list to ensure the necessary ingredients for a meal plan.
 
-## Hvorfor?
-Dette vil gøre hverdagen nemmere for forældre, samt studerende. Man ville kunne skabe mere struktur i sin hverdag og forhindre en masse madspild. Udover at spare tid, vil man også kunne tracke sit mad indhold, i forhold til: kalorier, mikronæringsstoffer og evt mikronæringsstoffer.
+## Why?
+This will make everyday life easier for parents and students. It would create more structure in their daily routines and prevent a lot of food waste. In addition to saving time, users would also be able to track their nutritional intake in terms of calories, micronutrients, and possibly macronutrients.

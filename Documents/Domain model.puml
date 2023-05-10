@@ -18,7 +18,7 @@ class GroceryList
 
 Application *-- MainMenu
 MainMenu *-- User
-User <|-- HouseHold
+User *-- HouseHold
 Recipe *-- Food
 MealPlan *-- Diet
 Diet *-- Recipe
