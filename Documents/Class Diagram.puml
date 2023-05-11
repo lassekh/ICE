@@ -27,6 +27,9 @@ AccountHandler : - Set<User> Users;
 AccountHandler : - void chooseName();
 AccountHandler : - void createName();
 
+class User
+class GroupOfUsers
+class UserHandler
 }
 
 Package Mealplan{
@@ -38,8 +41,21 @@ class Grocerylist
 
 Package Filters{
 class Diet
+'behøves felter vedr. diæt typer?
+Diet : - String lowCarb;
+Diet : - String keto;
+
+Diet : + String getDietType(String dietType);
+Diet : + String getAllergies(String allergiesOf);
+
 class Recommendation
+Recommendation : + Recipe getRandomRecipe();
+
 class FoodHandler
+FoodHandler : - List<food> ownRecipe;
+FoodHandler : + addFoodToList();
+FoodHandler : + removeFoodFromList();
+
 }
 
 
@@ -52,6 +68,7 @@ class DBUser
 class DBRecipe
 class DBFood
 }
+
 
 'Label on relations
 DBConnector <|-- DBUser
