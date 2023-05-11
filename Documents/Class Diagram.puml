@@ -3,6 +3,30 @@
 !pragma layout smetana
 
 Package User{
+class Account
+class AccountUsers
+class AccountHandler
+
+'Label on relations
+AccountUsers <|-- Account
+AccountHandler *-- AccountUsers
+
+'Methods and attributes
+Account : - String mail;
+Account : - String password;
+Account : + void getMail();
+Account : + void getPassword();
+
+AccountUsers : - String[] userNames = new String [5]];
+AccountUsers : + void createUser();
+AccountUsers : + void deleteUser();
+
+AccountHandler : + void login();
+AccountHandler : + void createAccount();
+AccountHandler : - Set<User> Users;
+AccountHandler : - void chooseName();
+AccountHandler : - void createName();
+
 class User
 class GroupOfUsers
 class UserHandler
@@ -40,8 +64,21 @@ Grocerylist *-- Ingredient
 
 Package Filters{
 class Diet
+'behøves felter vedr. diæt typer?
+Diet : - String lowCarb;
+Diet : - String keto;
+
+Diet : + String getDietType(String dietType);
+Diet : + String getAllergies(String allergiesOf);
+
 class Recommendation
+Recommendation : + Recipe getRandomRecipe();
+
 class FoodHandler
+FoodHandler : - List<food> ownRecipe;
+FoodHandler : + addFoodToList();
+FoodHandler : + removeFoodFromList();
+
 }
 
 
@@ -53,6 +90,19 @@ interface DBConnector
 class DBUser
 class DBRecipe
 class DBFood
+
+
+UI : - Scanner scan = new Scanner(System.in)
+UI : + void displayMessage(String msg)
+UI : + String getInput(String msg)
+
+DBConnector : + static final String DB_URL
+DBConnector : + static final String USER
+DBUser : + void saveUsers(String username, password)
+DBUser : + ArrayList<User> readUserData()
+
+DBRecipe : + ArrayList<Recipe> readRecipe()
+
 }
 
 
