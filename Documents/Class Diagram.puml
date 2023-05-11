@@ -6,10 +6,12 @@ Package User{
 class Account
 class AccountUsers
 class AccountHandler
+class User
 
 'Label on relations
-AccountUsers <|-- Account
-AccountHandler *-- AccountUsers
+Account <|-- AccountUsers
+AccountHandler *-- Account
+AccountUsers *-- User
 
 'Methods and attributes
 Account : - String mail;
@@ -17,25 +19,27 @@ Account : - String password;
 Account : + void getMail();
 Account : + void getPassword();
 
-AccountUsers : - String[] userNames = new String [5]];
+AccountUsers : - User[] userNames = new User [5]];
 AccountUsers : + void createUser();
 AccountUsers : + void deleteUser();
 
 AccountHandler : + void login();
 AccountHandler : + void createAccount();
-AccountHandler : - Set<User> Users;
+AccountHandler : - Set<Account> accounts;
 AccountHandler : - void chooseName();
 AccountHandler : - void createName();
 
-class User
-class GroupOfUsers
-class UserHandler
+User : - String name;
+User : - String age;
+User : + User(String name, String age);
+
 }
 
 Package Mealplan{
 class Mealplan
 Mealplan : - HashMap<Date, Recipe> ListOfMeals
 Mealplan : + Mealplan(HashMap<Date, DailyMealplan> ListOfMeals)
+
 class DailyMealplan
 DailyMealplan : - Recipe dinner
 DailyMealplan : - Recipe lunch
@@ -43,15 +47,18 @@ DailyMealplan : - Recipe breakfast
 DailyMealplan : + DailyMealplan(Recipe dinner)
 DailyMealplan : + DailyMealplan(Recipe dinner, Recipe lunch)
 DailyMealplan : + DailyMealplan(Recipe breakfast, Recipe lunch, Recipe dinner)
+
 class Recipe
 Recipe : - String title
-Recipe : - int time
+Recipe : - int prepTime
 Recipe : - HashMap<Ingredient i, double amount>
 Recipe : Recipe(String title, int time, HashMap<Ingredient i, double amount>)
+
 class Ingredient
 Ingredient : - String name
 Ingredient : - String category
 Ingredient : - HashMap<String nutrition, double content>
+
 class Grocerylist
 Grocerylist : HashSet<Ingredient> list
 
@@ -65,43 +72,53 @@ Grocerylist *-- Ingredient
 Package Filters{
 class Diet
 'behøves felter vedr. diæt typer?
-Diet : - String lowCarb;
-Diet : - String keto;
+'Diet : - String lowCarb;
+'Diet : - String keto;
 
-Diet : + String getDietType(String dietType);
-Diet : + String getAllergies(String allergiesOf);
+Diet : + Set<Recipe> getDietType(String dietType);
+Diet : + Set<Recipe> getAllergies(String allergiesOf);
+'evt i fremtiden en liste hvor begge kriterier indgår
 
 class Recommendation
-Recommendation : + Recipe getRandomRecipe();
+Recommendation : + Set<Recipe> getRandomRecipe();
+Recommendation : + Set<Recipe> getRandomRecipe(String dontLike);
 
 class FoodHandler
-FoodHandler : - List<food> ownRecipe;
-FoodHandler : + addFoodToList();
-FoodHandler : + removeFoodFromList();
+FoodHandler : - List<Ingredient> ownRecipe;
+FoodHandler : + addIngredientsToList();
+FoodHandler : + removeIngredientFromList();
 
 }
 
 
 
 Package Utility{
-class IO
+'class IO
 class UI
 interface DBConnector
 class DBUser
 class DBRecipe
-class DBFood
+class DBIngredients
 
 
-UI : - Scanner scan = new Scanner(System.in)
-UI : + void displayMessage(String msg)
-UI : + String getInput(String msg)
+UI : - Scanner scan = new Scanner(System.in);
+UI : + void displayMessage(String msg);
+UI : + String getInput(String msg);
 
-DBConnector : + static final String DB_URL
-DBConnector : + static final String USER
-DBUser : + void saveUsers(String username, password)
-DBUser : + ArrayList<User> readUserData()
+DBConnector : - DBPassword;
+DBConnector : - static final String DB_URL;
+DBConnector : - static final String USER;
+DBConnector : + void saveData();
+DBConnector : + Set<Object> readData();
 
-DBRecipe : + ArrayList<Recipe> readRecipe()
+DBUser : + void saveData(String username, password)
+DBUser : + Set<User> readUserData();
+
+DBRecipe : + Set<Recipe> readRecipe();
+DBRecipe : + void saveData(Recipe dinner);
+
+DBIngredients : + Set<Ingredient> readRecipe();
+DBIngredients : + void saveData(Ingredients ingredient);
 
 }
 
@@ -109,7 +126,7 @@ DBRecipe : + ArrayList<Recipe> readRecipe()
 'Label on relations
 DBConnector <|-- DBUser
 DBConnector <|-- DBRecipe
-DBConnector <|-- DBFood
+DBConnector <|-- DBIngredients
 
 'User *-- Grocerylist
 'Recipe *-- Diet
