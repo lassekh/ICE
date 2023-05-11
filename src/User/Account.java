@@ -14,7 +14,6 @@ public class Account {
         this.mail = mail;
         this.password = password;
         this.users = new LinkedList<User>();
-
     }
 
     public String getMail(){
