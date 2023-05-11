@@ -30,6 +30,18 @@ interface DBConnector
 class DBUser
 class DBRecipe
 class DBFood
+
+UI : - Scanner scan = new Scanner(System.in)
+UI : + void displayMessage(String msg)
+UI : + String getInput(String msg)
+
+DBConnector : + static final String DB_URL
+DBConnector : + static final String USER
+DBUser : + void saveUsers(String username, password)
+DBUser : + ArrayList<User> readUserData()
+
+DBRecipe : + ArrayList<Recipe> readRecipe()
+
 }
 
 'Label on relations
