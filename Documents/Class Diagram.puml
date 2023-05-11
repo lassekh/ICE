@@ -17,8 +17,21 @@ class Grocerylist
 
 Package Filters{
 class Diet
+'behøves felter vedr. diæt typer?
+Diet : - String lowCarb;
+Diet : - String keto;
+
+Diet : + String getDietType(String dietType);
+Diet : + String getAllergies(String allergiesOf);
+
 class Recommendation
+Recommendation : + Recipe getRandomRecipe();
+
 class FoodHandler
+FoodHandler : - List<food> ownRecipe;
+FoodHandler : + addFoodToList();
+FoodHandler : + removeFoodFromList();
+
 }
 
 
@@ -31,8 +44,6 @@ class DBUser
 class DBRecipe
 class DBFood
 }
-
-User: - String mail;
 
 
 'Label on relations
