@@ -31,8 +31,10 @@ AccountHandler : - void chooseName();
 AccountHandler : - void createName();
 
 User : - String name;
-User : - String age;
-User : + User(String name, String age);
+User : - int age;
+User : + User(String name, int age);
+User : + String getName();
+User : + int getAge();
 
 }
 
