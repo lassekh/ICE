@@ -26,8 +26,8 @@ AccountUsers : + void deleteUser();
 AccountHandler : + void login();
 AccountHandler : + void createAccount();
 AccountHandler : - Set<Account> accounts;
-AccountHandler : - void chooseName();
-AccountHandler : - void createName();
+'AccountHandler : - void chooseName();
+'AccountHandler : - void createName();
 
 User : - String name;
 User : - String age;
