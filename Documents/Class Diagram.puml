@@ -34,9 +34,32 @@ class UserHandler
 
 Package Mealplan{
 class Mealplan
+Mealplan : - HashMap<Date, Recipe> ListOfMeals
+Mealplan : + Mealplan(HashMap<Date, DailyMealplan> ListOfMeals)
+class DailyMealplan
+DailyMealplan : - Recipe dinner
+DailyMealplan : - Recipe lunch
+DailyMealplan : - Recipe breakfast
+DailyMealplan : + DailyMealplan(Recipe dinner)
+DailyMealplan : + DailyMealplan(Recipe dinner, Recipe lunch)
+DailyMealplan : + DailyMealplan(Recipe breakfast, Recipe lunch, Recipe dinner)
 class Recipe
-class Food
+Recipe : - String title
+Recipe : - int time
+Recipe : - HashMap<Ingredient i, double amount>
+Recipe : Recipe(String title, int time, HashMap<Ingredient i, double amount>)
+class Ingredient
+Ingredient : - String name
+Ingredient : - String category
+Ingredient : - HashMap<String nutrition, double content>
 class Grocerylist
+Grocerylist : HashSet<Ingredient> list
+
+'Label on relations
+Mealplan "1" *-- "has 1..many" DailyMealplan
+DailyMealplan "1" *-- "has 1..3" Recipe
+Recipe *-- Ingredient
+Grocerylist *-- Ingredient
 }
 
 Package Filters{
@@ -68,6 +91,7 @@ class DBUser
 class DBRecipe
 class DBFood
 
+
 UI : - Scanner scan = new Scanner(System.in)
 UI : + void displayMessage(String msg)
 UI : + String getInput(String msg)
@@ -86,4 +110,9 @@ DBRecipe : + ArrayList<Recipe> readRecipe()
 DBConnector <|-- DBUser
 DBConnector <|-- DBRecipe
 DBConnector <|-- DBFood
+
+'User *-- Grocerylist
+'Recipe *-- Diet
+'Recipe *-- DBConnector
+'Ingredient *-- DBConnector
 @enduml
