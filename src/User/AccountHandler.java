@@ -1,4 +1,5 @@
 package User;
+
 import java.util.Scanner;
 import java.util.Set;
 
@@ -23,19 +24,17 @@ public class AccountHandler {
         System.out.println("Please type your option below: ");
 
         boolean inputValidator = true;
-        while(inputValidator){
-            try{
+        while (inputValidator) {
+            try {
                 int input = scanner.nextInt();
-                if (input == 1){
+                if (input == 1) {
                     //INPUT CREATE USER METHOD
                     inputValidator = false;
-                }
-                else if(input == 2){
+                } else if (input == 2) {
                     //INPUT LOGIN METHOD
                     inputValidator = false;
                 }
-            }
-            catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 System.out.println("I'm sorry.. I didn't understand that. Please try again.");
             }
         }
@@ -59,18 +58,17 @@ public class AccountHandler {
         return "";
     }
 
-    private String setPassword(){
+    private String setPassword() {
         boolean inputValidator = true;
         System.out.println("Which passord would you like to create?");
         System.out.println("Must be at least 5 long");
-        while(inputValidator){
+        while (inputValidator) {
             String input = scanner.nextLine();
-            if (input.length() >= 5){
+            if (input.length() >= 5) {
                 this.password = input;
                 inputValidator = false;
                 return input;
-            }
-            else {
+            } else {
                 System.out.println("Not correct! Try again");
             }
         }
@@ -78,11 +76,11 @@ public class AccountHandler {
     }
 
 
-    public void createAccount(){
-        //String mail = setMail();
-        //String password = setPassword();
-        // Account account = new (setMail(), setPassword());
-        // accounts.add(account);
+    public void createAccount() {
+        String mail = setMail();
+        String password = setPassword();
+        Account account = new (setMail(), setPassword());
+        accounts.add(account);
 
     }
 
