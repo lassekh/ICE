@@ -1,7 +1,7 @@
 package User;
 import java.util.Scanner;
 
-public class User extends HouseHold{
+public class User extends Account {
     //Mail instance variabel
     private String mail;
     //Password instance variabel

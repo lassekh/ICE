@@ -16,8 +16,9 @@ AccountUsers *-- User
 'Methods and attributes
 Account : - String mail;
 Account : - String password;
-Account : + void getMail();
-Account : + void getPassword();
+Account : + Account(String mail, String password)
+Account : + String getMail();
+Account : + String getPassword();
 
 AccountUsers : - User[] userNames = new User [5]];
 AccountUsers : + void createUser();
