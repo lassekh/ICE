@@ -4,7 +4,7 @@
 
 Package User{
 class User
-class HouseHold
+class GroupOfUsers
 class UserHandler
 }
 
@@ -31,6 +31,9 @@ class DBUser
 class DBRecipe
 class DBFood
 }
+
+User: - String mail;
+
 
 'Label on relations
 DBConnector <|-- DBUser
