@@ -1,11 +1,12 @@
 package User;
-
+import java.util.HashSet;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Set;
 
 public class AccountHandler {
 
-    //private Set<Account> accounts = new Set<Account>(){};
+    private Set<Account> accounts = new HashSet<Account>(){};
     //Mail instance variabel
     private String mail;
     //Password instance variabel
@@ -14,7 +15,7 @@ public class AccountHandler {
     private Scanner scanner = new Scanner(System.in);
 
     public AccountHandler() {
-        loginOrCreateUser();
+
     }
 
     public void loginOrCreateUser() {
@@ -34,8 +35,9 @@ public class AccountHandler {
                     //INPUT LOGIN METHOD
                     inputValidator = false;
                 }
-            } catch (IllegalArgumentException e) {
+            } catch (InputMismatchException e) {
                 System.out.println("I'm sorry.. I didn't understand that. Please try again.");
+                inputValidator = false;
             }
         }
     }
@@ -77,9 +79,7 @@ public class AccountHandler {
 
 
     public void createAccount() {
-        String mail = setMail();
-        String password = setPassword();
-        Account account = new (setMail(), setPassword());
+        Account account = new Account (setMail(), setPassword());
         accounts.add(account);
 
     }
