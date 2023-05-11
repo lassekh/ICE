@@ -16,8 +16,9 @@ AccountUsers *-- User
 'Methods and attributes
 Account : - String mail;
 Account : - String password;
-Account : + void getMail();
-Account : + void getPassword();
+Account : + Account(String mail, String password)
+Account : + String getMail();
+Account : + String getPassword();
 
 AccountUsers : - User[] userNames = new User [5]];
 AccountUsers : + void createUser();
@@ -26,8 +27,8 @@ AccountUsers : + void deleteUser();
 AccountHandler : + void login();
 AccountHandler : + void createAccount();
 AccountHandler : - Set<Account> accounts;
-AccountHandler : - void chooseName();
-AccountHandler : - void createName();
+'AccountHandler : - void chooseName();
+'AccountHandler : - void createName();
 
 User : - String name;
 User : - int age;
