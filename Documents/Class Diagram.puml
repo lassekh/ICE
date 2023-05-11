@@ -3,9 +3,30 @@
 !pragma layout smetana
 
 Package User{
-class User
-class HouseHold
-class UserHandler
+class Account
+class AccountUsers
+class AccountHandler
+
+'Label on relations
+AccountUsers <|-- Account
+AccountHandler *-- AccountUsers
+
+'Methods and attributes
+Account : - String mail;
+Account : - String password;
+Account : + void getMail();
+Account : + void getPassword();
+
+AccountUsers : - String[] userNames = new String [5]];
+AccountUsers : + void createUser();
+AccountUsers : + void deleteUser();
+
+AccountHandler : + void login();
+AccountHandler : + void createAccount();
+AccountHandler : - Set<User> Users;
+AccountHandler : - void chooseName();
+AccountHandler : - void createName();
+
 }
 
 Package Mealplan{
