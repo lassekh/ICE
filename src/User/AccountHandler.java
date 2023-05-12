@@ -111,7 +111,7 @@ public class AccountHandler {
 
     private boolean login(String email, String password) {
         for (Account account: accounts){
-            if(account.getMail().equalsIgnoreCase(email) && account.getPassword().equals(password)){
+            if(account.getEmail().equalsIgnoreCase(email) && account.getPassword().equals(password)){
                 return true;
             }
         }
