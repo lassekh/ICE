@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bda8e929-68b7-4043-88c6-b08716eb43f7" name="Changes" comment="" />
+    <list default="true" id="bda8e929-68b7-4043-88c6-b08716eb43f7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/Class Diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/Class Diagram.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/Domain Model.puml" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/Domain Model.puml" afterDir="false" />
+    </list>
     <list id="79b6391b-23b2-4cde-b6be-73fd3249f222" name="Changes by baban" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +19,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="UML Class" />
-        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -27,6 +30,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2PY1jV3HkH7rguwxPZq2v2rdNY2" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
