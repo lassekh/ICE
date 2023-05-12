@@ -26,49 +26,37 @@ public class AccountHandler {
     }
 
     public void loginOrCreateUser() {
-
-        List<String> listOfMenuOptions = new ArrayList<>();
-        listOfMenuOptions.add("Create a user");
-        listOfMenuOptions.add("Login");
-
-        ui.displayMenu(listOfMenuOptions);
-
-        scanner = new Scanner(System.in);
+        List<String> mainMenu = new ArrayList<>();
+        mainMenu.add("Create a user");
+        mainMenu.add("Login");
+        ui.displayMenu(mainMenu);
+        int input = Integer.parseInt(ui.getInput("Type number:"));
 
         boolean inputValidator = true;
         while (inputValidator) {
             try {
-                int input = scanner.nextInt();
                 if (input == 1) {
                     createAccount();
                     inputValidator = false;
                 } else if (input == 2) {
-                    ui.loginMenu();
+                    loginForm();
                     inputValidator = false;
                 } else {
-                    System.out.println("Invalid input. Please enter either 1 or 2.");
+                    input = Integer.parseInt(ui.getInput("Invalid input. Please enter either 1 or 2."));
                 }
-            } catch (InputMismatchException e) {
-                System.out.println("You did not type a number. Please try again:");
-                scanner.nextLine(); // Clear the invalid input from the scanner
+            } catch (NumberFormatException e) {
+                ui.getInput("You did not type a number. Please try again:"); // Clear the invalid input from the scanner
             }
         }
     }
 
 
     public String createMail() {
-        Scanner scanner = new Scanner(System.in);
         boolean isValidEmail = false;
-        String inputEmail;
-        scanner = new Scanner(System.in);
-
-        System.out.print("Enter your email address. It must end with .dk or .com: ");
-
         while (!isValidEmail) {
-            inputEmail = scanner.nextLine();
+            String inputEmail = ui.getInput("Enter your email address. It must end with .dk or .com: ");
             if (inputEmail.contains("@") && (inputEmail.endsWith(".com") || inputEmail.endsWith(".dk"))) {
                 email = inputEmail;
-                isValidEmail = true;
                 return email;
             } else {
                 System.out.println("Your inout is invalid. Please try again.");
@@ -79,13 +67,8 @@ public class AccountHandler {
 
     public String createPassword() {
         boolean inputValidPassword = false;
-        scanner = new Scanner(System.in);
-        String inputPassword;
-
-        System.out.println("Enter a password. It must contain at least 5 characters: ");
-
         while (!inputValidPassword) {
-            inputPassword = scanner.nextLine();
+            String inputPassword = ui.getInput("Enter a password. It must contain at least 5 characters: ");
             if (inputPassword.length() >= 5) {
                 password = inputPassword;
                 return password;
@@ -94,6 +77,13 @@ public class AccountHandler {
             }
         }
         return null;
+    }
+    public void loginForm() {
+        email = ui.getInput("Enter your email: ");
+        password = ui.getInput("Enter your password: ");
+        if (login(email, password)) {
+            System.out.println("Account with email " + email + " is now logged in.");
+        }
     }
 
     public boolean login(String email, String password) {
