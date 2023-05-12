@@ -6,10 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="bda8e929-68b7-4043-88c6-b08716eb43f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/Class Diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/Class Diagram.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/Domain Model.puml" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/Domain Model.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/AccountHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/AccountHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utility/DBUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/DBUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utility/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/UI.java" afterDir="false" />
     </list>
     <list id="79b6391b-23b2-4cde-b6be-73fd3249f222" name="Changes by baban" comment="" />
+    <list id="b2c8214a-d5bb-4fbf-bb01-766ff4b5ba2c" name="Changes by Lasse" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,6 +104,7 @@
       <workItem from="1683718441803" duration="373000" />
       <workItem from="1683718980216" duration="14000" />
       <workItem from="1683787789148" duration="1353000" />
+      <workItem from="1683886904718" duration="1739000" />
     </task>
     <servers />
   </component>

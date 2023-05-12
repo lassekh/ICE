@@ -1,5 +1,7 @@
 package User;
 
+import Utility.UI;
+
 import java.util.*;
 
 public class AccountHandler {
@@ -17,15 +19,19 @@ public class AccountHandler {
 
     private AccountHandler accountHandler;
 
+    private UI ui = new UI();
+
     public AccountHandler() {
 
     }
 
     public void loginOrCreateUser() {
-        System.out.println("Hi! Which of the following options would you like to proceed with?");
-        System.out.println("1) Create a user");
-        System.out.println("2) Login");
-        System.out.println("Please enter your option below: ");
+
+        List<String> listOfMenuOptions = new ArrayList<>();
+        listOfMenuOptions.add("Create a user");
+        listOfMenuOptions.add("Login");
+
+        ui.displayMenu(listOfMenuOptions);
 
         scanner = new Scanner(System.in);
 
@@ -37,7 +43,7 @@ public class AccountHandler {
                     createAccount();
                     inputValidator = false;
                 } else if (input == 2) {
-                    loginMenu();
+                    ui.loginMenu();
                     inputValidator = false;
                 } else {
                     System.out.println("Invalid input. Please enter either 1 or 2.");
@@ -90,26 +96,7 @@ public class AccountHandler {
         return null;
     }
 
-    public void loginMenu() {
-        scanner = new Scanner(System.in);
-
-        System.out.println("Enter your email: ");
-        String email = scanner.nextLine();
-        System.out.println("Enter your password: ");
-        String password = scanner.nextLine();
-
-        boolean loggedIn = accountHandler.login(email, password);
-
-        if (loggedIn) {
-            System.out.println("Account with email " + email + " is now logged in.");
-        }
-
-    }
-
-
-
-
-    private boolean login(String email, String password) {
+    public boolean login(String email, String password) {
         for (Account account: accounts){
             if(account.getEmail().equalsIgnoreCase(email) && account.getPassword().equals(password)){
                 return true;
