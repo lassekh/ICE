@@ -3,27 +3,23 @@
 !pragma layout smetana
 
 class Application
+class Account
+class IngredientList
+class Ingredient
 class User
-class Food
-class HouseHold
-class Diet
-class MainMenu
 class MealPlan
-'class Family
-'class Database
+class DailyMealPlan
 class Recipe
-class Weeks
-'class Recommendation
 class GroceryList
 
-Application *-- MainMenu
-MainMenu *-- User
-User *-- HouseHold
-Recipe *-- Food
-MealPlan *-- Diet
-Diet *-- Recipe
-Weeks *-- MealPlan
-Application *-- Weeks
-MealPlan *-- GroceryList
+Application *-- Account
+Application *-- Recipe
+Account *-- MealPlan
+MealPlan *-- DailyMealPlan
+DailyMealPlan *-- Recipe
+Recipe *-- IngredientList
+IngredientList *-- Ingredient
+Account *-- GroceryList
+Account *-- User
 
 @enduml
