@@ -1,15 +1,21 @@
 package User;
+
 import java.util.*;
 
 public class AccountHandler {
 
-    private Set<Account> accounts = new HashSet<Account>(){};
+    private Set<Account> accounts = new HashSet<Account>() {
+    };
     //Mail instance variabel
-    private String mail;
+    private String email;
     //Password instance variabel
     private String password;
     //Scanner class to get information from the user
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
+
+    private Account account;
+
+    private AccountHandler accountHandler;
 
     public AccountHandler() {
 
@@ -21,15 +27,17 @@ public class AccountHandler {
         System.out.println("2) Login");
         System.out.println("Please enter your option below: ");
 
+        scanner = new Scanner(System.in);
+
         boolean inputValidator = true;
         while (inputValidator) {
             try {
                 int input = scanner.nextInt();
                 if (input == 1) {
-                    // INPUT CREATE USER METHOD
+                    createAccount();
                     inputValidator = false;
                 } else if (input == 2) {
-                    // INPUT LOGIN METHOD
+                    loginMenu();
                     inputValidator = false;
                 } else {
                     System.out.println("Invalid input. Please enter either 1 or 2.");
@@ -42,39 +50,39 @@ public class AccountHandler {
     }
 
 
-    private String setMail() {
-        boolean inputValidator = true;
-        System.out.println("What's your e-mail?");
-        System.out.println("(Your e-mail must either end with .dk or .com)");
+    public String createMail() {
+        Scanner scanner = new Scanner(System.in);
+        boolean isValidEmail = false;
+        String inputEmail;
+        scanner = new Scanner(System.in);
 
-        while (inputValidator) {
-            try {
-                String input = scanner.nextLine();
-                if (input.length() > 5 && input.contains("@") && (input.contains(".com")) || input.contains(".dk")) {
-                    this.mail = input;
-                    inputValidator = false;
-                    return input;
-                } //else {
-                    //System.out.println("Not correct! Try again");
-                    //scanner.nextLine();
-                //}
-            }catch(IllegalFormatWidthException e){
-                System.out.println("incorrect email. try again.");
+        System.out.print("Enter your email address. It must end with .dk or .com: ");
+
+        while (!isValidEmail) {
+            inputEmail = scanner.nextLine();
+            if (inputEmail.contains("@") && (inputEmail.endsWith(".com") || inputEmail.endsWith(".dk"))) {
+                email = inputEmail;
+                isValidEmail = true;
+                return email;
+            } else {
+                System.out.println("Your inout is invalid. Please try again.");
             }
         }
-        return "";
+        return null;
     }
 
-    private String setPassword() {
-        boolean inputValidator = true;
-        System.out.println("Which passord would you like to create?");
-        System.out.println("Must be at least 5 long");
-        while (inputValidator) {
-            String input = scanner.nextLine();
-            if (input.length() >= 5) {
-                this.password = input;
-                inputValidator = false;
-                return input;
+    public String createPassword() {
+        boolean inputValidPassword = false;
+        scanner = new Scanner(System.in);
+        String inputPassword;
+
+        System.out.println("Enter a password. It must contain at least 5 characters: ");
+
+        while (!inputValidPassword) {
+            inputPassword = scanner.nextLine();
+            if (inputPassword.length() >= 5) {
+                password = inputPassword;
+                return password;
             } else {
                 System.out.println("Not correct! Try again");
             }
@@ -82,13 +90,39 @@ public class AccountHandler {
         return null;
     }
 
+    public void loginMenu() {
+        scanner = new Scanner(System.in);
 
-    public void createAccount() {
-        Account account = new Account (setMail(), setPassword());
-        accounts.add(account);
+        System.out.println("Enter your email: ");
+        String email = scanner.nextLine();
+        System.out.println("Enter your password: ");
+        String password = scanner.nextLine();
 
-        System.out.println(accounts);
+        boolean loggedIn = accountHandler.login(email, password);
+
+        if (loggedIn) {
+            System.out.println("Account with email " + email + " is now logged in.");
+        }
 
     }
 
+
+
+
+    private boolean login(String email, String password) {
+        for (Account account: accounts){
+            if(account.getMail().equalsIgnoreCase(email) && account.getPassword().equals(password)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void createAccount() {
+        account = new Account(createMail(), createPassword());
+        accounts.add(account);
+
+        System.out.println(account);
+
+    }
 }

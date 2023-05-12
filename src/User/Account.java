@@ -10,6 +10,7 @@ public class Account {
     private String mail;
     private String password;
     private List<User> users;
+
     public Account(String mail, String password){
         this.mail = mail;
         this.password = password;
@@ -27,10 +28,14 @@ public class Account {
         User user = new User(name, age);
         return user;
     }
+
     public void deleteUser(String name){
         //this.users er en ArrayList af denne Accounts users
         this.users.remove(name);
     }
 
-
+    @Override
+    public String toString(){
+        return "email is " + getMail() + ", Password is: " + getPassword();
+    }
 }
