@@ -1,8 +1,5 @@
 package User;
-import java.util.HashSet;
-import java.util.InputMismatchException;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class AccountHandler {
 
@@ -19,25 +16,27 @@ public class AccountHandler {
     }
 
     public void loginOrCreateUser() {
-        System.out.println("Hi! Which of the following options, do you want to proceed with?");
+        System.out.println("Hi! Which of the following options would you like to proceed with?");
         System.out.println("1) Create a user");
         System.out.println("2) Login");
-        System.out.println("Please type your option below: ");
+        System.out.println("Please enter your option below: ");
 
         boolean inputValidator = true;
         while (inputValidator) {
             try {
                 int input = scanner.nextInt();
                 if (input == 1) {
-                    //INPUT CREATE USER METHOD
+                    // INPUT CREATE USER METHOD
                     inputValidator = false;
                 } else if (input == 2) {
-                    //INPUT LOGIN METHOD
+                    // INPUT LOGIN METHOD
                     inputValidator = false;
+                } else {
+                    System.out.println("Invalid input. Please enter either 1 or 2.");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("I'm sorry.. I didn't understand that. Please try again.");
-                inputValidator = false;
+                System.out.println("You did not type a number. Please try again:");
+                scanner.nextLine(); // Clear the invalid input from the scanner
             }
         }
     }
@@ -47,14 +46,20 @@ public class AccountHandler {
         boolean inputValidator = true;
         System.out.println("What's your e-mail?");
         System.out.println("(Your e-mail must either end with .dk or .com)");
+
         while (inputValidator) {
-            String input = scanner.nextLine();
-            if (input.length() > 5 && input.contains("@") && (input.contains(".com")) || input.contains(".dk")) {
-                this.mail = input;
-                inputValidator = false;
-                return input;
-            } else {
-                System.out.println("Not correct! Try again");
+            try {
+                String input = scanner.nextLine();
+                if (input.length() > 5 && input.contains("@") && (input.contains(".com")) || input.contains(".dk")) {
+                    this.mail = input;
+                    inputValidator = false;
+                    return input;
+                } //else {
+                    //System.out.println("Not correct! Try again");
+                    //scanner.nextLine();
+                //}
+            }catch(IllegalFormatWidthException e){
+                System.out.println("incorrect email. try again.");
             }
         }
         return "";
@@ -81,6 +86,8 @@ public class AccountHandler {
     public void createAccount() {
         Account account = new Account (setMail(), setPassword());
         accounts.add(account);
+
+        System.out.println(accounts);
 
     }
 

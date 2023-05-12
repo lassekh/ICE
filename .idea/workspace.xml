@@ -7,9 +7,7 @@
     <list default="true" id="bda8e929-68b7-4043-88c6-b08716eb43f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ICE/User/AccountHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/User/AccountHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICE/User/HouseHold.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ICE/User/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/User/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICE/User/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/User/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/User/AccountHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/AccountHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/User/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Main.java" afterDir="false" />
     </list>
