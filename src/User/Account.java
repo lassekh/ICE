@@ -7,18 +7,18 @@ import java.util.Scanner;
 
 
 public class Account {
-    private String mail;
+    private String email;
     private String password;
     private List<User> users;
 
-    public Account(String mail, String password){
-        this.mail = mail;
+    public Account(String email, String password){
+        this.email = email;
         this.password = password;
         this.users = new LinkedList<User>();
     }
 
-    public String getMail(){
-        return mail;
+    public String getEmail(){
+        return email;
 
     }
     public String getPassword(){
@@ -31,11 +31,11 @@ public class Account {
 
     public void deleteUser(String name){
         //this.users er en ArrayList af denne Accounts users
-        this.users.remove(name);
+        users.remove(name);
     }
 
     @Override
     public String toString(){
-        return "email is " + getMail() + ", Password is: " + getPassword();
+        return "email is " + getEmail() + ", Password is: " + getPassword();
     }
 }
