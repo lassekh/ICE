@@ -1,5 +1,7 @@
 package User;
 
+import Utility.DBConnector;
+import Utility.DBUser;
 import Utility.UI;
 
 import java.util.*;
@@ -20,6 +22,7 @@ public class AccountHandler {
     private AccountHandler accountHandler;
 
     private UI ui = new UI();
+    private DBUser DB = new DBUser();
 
     public AccountHandler() {
 
@@ -78,6 +81,7 @@ public class AccountHandler {
         }
         return null;
     }
+
     public void loginForm() {
         email = ui.getInput("Enter your email: ");
         password = ui.getInput("Enter your password: ");
@@ -87,19 +91,50 @@ public class AccountHandler {
     }
 
     public boolean login(String email, String password) {
-        for (Account account: accounts){
-            if(account.getEmail().equalsIgnoreCase(email) && account.getPassword().equals(password)){
+        for (Account account : accounts) {
+            if (account.getEmail().equalsIgnoreCase(email) && account.getPassword().equals(password)) {
                 return true;
             }
         }
         return false;
     }
 
+    /*
     public void createAccount() {
         account = new Account(createMail(), createPassword());
         accounts.add(account);
 
         System.out.println(account);
 
+    }
+
+     */
+    public void createAccount() {
+
+        boolean isValidEmail = false;
+        while (!isValidEmail) {
+            String inputEmail = ui.getInput("Enter your email address. It must end with .dk or .com: ");
+
+            //TODO email has to be unique. Check is input already exists. if exists let the user know and try with another email
+
+            if (inputEmail.contains("@") && (inputEmail.endsWith(".com") || inputEmail.endsWith(".dk"))) {
+                email = inputEmail;
+                isValidEmail = true;
+            } else {
+                System.out.println("Your inout is invalid. Please try again.");
+            }
+        }
+        boolean isValidPassword = false;
+        while (!isValidPassword) {
+            String inputPassword = ui.getInput("Enter a password. It must contain at least 5 characters: ");
+            if (inputPassword.length() >= 5) {
+                password = inputPassword;
+                isValidPassword = true;
+            } else {
+                System.out.println("Not correct! Try again");
+            }
+        }
+        DB.saveUser(email, password);
+        ui.displayMessage("Congratulation! Your account has been registered successfully.");
     }
 }

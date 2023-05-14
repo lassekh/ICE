@@ -1,6 +1,6 @@
 package User;
 
-public class Main {
+public class UserMain {
 
     public static void main(String[] args) {
         AccountHandler ah = new AccountHandler();

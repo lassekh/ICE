@@ -11,4 +11,5 @@ public interface DBConnector {
     static final String PASS = "LAHY-Dat23!";
 
 
+    void saveUser(String email, String password);
 }
