@@ -1,9 +1,13 @@
 package Utility;
 
+import Mealplan.Ingredient;
+import Mealplan.IngredientList;
 import Mealplan.Recipe;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class DBRecipe implements DBConnector{
@@ -66,12 +70,20 @@ public class DBRecipe implements DBConnector{
                 String title = rs.getString("name"); //Maybe change DB column to title?
                 int cookTime = rs.getInt("minutes"); //change column to match Recipe class data
                 String ingredientsStr = rs.getString("ingredients"); //needs to be split up and added as IngredientList
-                //String[] ingredientsArr = ingredientsStr.split(", ");
+                String[] ingredientsArr = ingredientsStr.replaceAll(" ", "").split(",");
+                List<String> ingredientList = new ArrayList<>();
+                for(int i = 0; i < ingredientsArr.length; i++){
+                    ingredientList.add(ingredientsArr[i]);
+                }
                 String stepsStr = rs.getString("steps"); //needs to be split up and added as List
-                //String[] stepsArr = stepsStr.split(", ");
+                String[] stepsArr = stepsStr.replaceAll(" ","").split(",");
+                List<String> listOfSteps = new ArrayList<>();
+                for(int i = 0; i < stepsArr.length; i++){
+                    listOfSteps.add(stepsArr[i]);
+                }
                 String description = rs.getString("description");
 
-                setOfRecipes.add(new Recipe(title, description, cookTime, ingredientsStr, stepsStr));
+                setOfRecipes.add(new Recipe(title, description, cookTime, ingredientList, listOfSteps));
             }
             rs.close();
             stmt.close();

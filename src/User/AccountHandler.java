@@ -45,7 +45,6 @@ public class AccountHandler {
         password = ui.getInput("Enter your password: ");
         if(login(email, password)){
             ui.displayMessage("Account with email " + email + " is now logged in.");
-            onlineAccount = new Account(email,password); //Lasse
         }
     }
 
@@ -53,6 +52,7 @@ public class AccountHandler {
         accounts = DB.readUserData(); //Lasse
         for (Account account : accounts) {
             if (account.getEmail().equalsIgnoreCase(email) && account.getPassword().equals(password)) {
+                onlineAccount = new Account(email,password); //Lasse
                 return true;
             }
         }
