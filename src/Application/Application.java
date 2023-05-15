@@ -14,11 +14,11 @@ public class Application {
     UI ui = new UI();
 
     public Application() {
-        mainMenu();
+        menu();
     }
 
 
-    public void mainMenu() {
+    public void menu() {
         List<String> options = new ArrayList<>();
         options.add("Show meal plan");
         options.add("create meal plan");
@@ -33,6 +33,7 @@ public class Application {
     }
 
     public void showMealPlan() {
+
         System.out.println("showMealPlan method: Finish the method please");
     }
 

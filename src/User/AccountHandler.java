@@ -1,6 +1,5 @@
 package User;
 
-import Utility.DBConnector;
 import Utility.DBUser;
 import Utility.UI;
 
@@ -28,7 +27,7 @@ public class AccountHandler {
 
     }
 
-    public void loginOrCreateUser() {
+    public void mainMenu() {
         List<String> mainMenu = new ArrayList<>();
         mainMenu.add("Create a user");
         mainMenu.add("Login");

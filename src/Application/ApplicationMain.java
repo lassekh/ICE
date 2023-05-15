@@ -6,7 +6,11 @@ public class ApplicationMain {
 
     public static void main(String[] args) {
         AccountHandler accountHandler = new AccountHandler();
-        //accountHandler.loginOrCreateUser();
+        accountHandler.mainMenu();
+
         Application application = new Application();
+        application.menu();
+
+
     }
 }
