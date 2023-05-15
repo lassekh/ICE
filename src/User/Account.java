@@ -11,7 +11,7 @@ public class Account {
     private String email;
     private String password;
     private List<User> users;
-    private MealPlan myMealplan = new MealPlan(); //Lasse
+    private MealPlan myMealplan; //Lasse
 
     public Account(String email, String password){
         this.email = email;

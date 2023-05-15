@@ -23,7 +23,7 @@ public class Application {
     }
     //Lasse
     public void startMenu(){
-        ah.loginOrCreateUser();
+        ah.mainMenu();
     }
 
     public void menu() {
@@ -41,11 +41,9 @@ public class Application {
     }
     //Lasse
     public void showMealPlan() {
-        try {
-            if (ah.getOnlineAccount().getMyMealplan() != null) {
-                ui.displayMessage("Your meal plan: " + ah.getOnlineAccount().getMyMealplan());
-            }
-        }catch(NullPointerException e){
+        if (ah.getOnlineAccount().getMyMealplan() != null) {
+            ui.displayMessage("Your meal plan: " + ah.getOnlineAccount().getMyMealplan());
+        }else{
             String input = ui.getInput("You don't have a meal plan. Do you want to create one? Y/N");
             if(input.equalsIgnoreCase("y")){
                 createMealPlan();
