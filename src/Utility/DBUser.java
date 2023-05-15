@@ -25,7 +25,7 @@ public class DBUser implements DBConnector{
             System.out.println("Creating statement...");
 
             //stmt = conn.createStatement();
-            String query = "INSERT INTO accounts VALUES (?,?)";
+            String query = "INSERT INTO accounts VALUES (null,?,?)";
             stmt = conn.prepareStatement(query);
             stmt.setString(1, email);
             stmt.setString(2, password);
