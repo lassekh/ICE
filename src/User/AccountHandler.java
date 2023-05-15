@@ -1,7 +1,7 @@
 package User;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.Set;
 
 public class AccountHandler {
 
@@ -14,28 +14,30 @@ public class AccountHandler {
     private Scanner scanner = new Scanner(System.in);
 
     public AccountHandler() {
-        loginOrCreateUser();
     }
 
     public void loginOrCreateUser() {
-        System.out.println("Hi! Which of the following options, do you want to proceed with?");
+        System.out.println("Hi! Which of the following options would you like to proceed with?");
         System.out.println("1) Create a user");
         System.out.println("2) Login");
-        System.out.println("Please type your option below: ");
+        System.out.println("Please enter your option below: ");
 
         boolean inputValidator = true;
         while (inputValidator) {
             try {
                 int input = scanner.nextInt();
                 if (input == 1) {
-                    //INPUT CREATE USER METHOD
+                    // INPUT CREATE USER METHOD
                     inputValidator = false;
                 } else if (input == 2) {
-                    //INPUT LOGIN METHOD
+                    // INPUT LOGIN METHOD
                     inputValidator = false;
+                } else {
+                    System.out.println("Invalid input. Please enter either 1 or 2.");
                 }
-            } catch (IllegalArgumentException e) {
-                System.out.println("I'm sorry.. I didn't understand that. Please try again.");
+            } catch (InputMismatchException e) {
+                System.out.println("I'm sorry, I didn't understand that. Please try again.");
+                scanner.nextLine(); // Clear the invalid input from the scanner
             }
         }
     }
@@ -79,8 +81,8 @@ public class AccountHandler {
     public void createAccount() {
         String mail = setMail();
         String password = setPassword();
-        Account account = new (setMail(), setPassword());
-        accounts.add(account);
+        //Account account = new (setMail(), setPassword());
+        //accounts.add(account);
 
     }
 
