@@ -32,23 +32,18 @@ public class AccountHandler {
         List<String> mainMenu = new ArrayList<>();
         mainMenu.add("Create a user");
         mainMenu.add("Login");
-        ui.displayMenu(mainMenu);
-        int input = Integer.parseInt(ui.getInput("Type number:"));
+        int input = ui.displayMenu(mainMenu);
+        //int input = Integer.parseInt(ui.getInput("Type number:"));
 
         boolean inputValidator = true;
         while (inputValidator) {
-            try {
-                if (input == 1) {
-                    createAccount();
-                    inputValidator = false;
-                } else if (input == 2) {
-                    loginForm();
-                    inputValidator = false;
-                } else {
-                    input = Integer.parseInt(ui.getInput("Invalid input. Please enter either 1 or 2."));
-                }
-            } catch (NumberFormatException e) {
-                ui.getInput("You did not type a number. Please try again:"); // Clear the invalid input from the scanner
+
+            if (input == 1) {
+                createAccount();
+                inputValidator = false;
+            } else if (input == 2) {
+                loginForm();
+                inputValidator = false;
             }
         }
     }

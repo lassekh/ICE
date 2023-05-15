@@ -8,9 +8,11 @@ import java.util.Set;
 
 public class DBUser implements DBConnector{
 
+    Connection conn = null;
+    PreparedStatement stmt = null;
+
+
     public void saveUser(String email, String password) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
         try {
             //STEP 1: Register JDBC driver
             Class.forName("com.mysql.jdbc.Driver");
@@ -59,8 +61,6 @@ public class DBUser implements DBConnector{
     }
 
     public Set<Account> readUserData() {
-        Connection conn = null;
-        PreparedStatement stmt = null;
         try {
             //STEP 1: Register JDBC driver
             Class.forName("com.mysql.jdbc.Driver");
