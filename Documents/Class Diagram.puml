@@ -86,10 +86,10 @@ Recipe : - String description
 Recipe : - int prepTime
 Recipe : - int cookTime
 Recipe : - IngredientList ingredients
-Recipe : - List<String> method
+Recipe : - List<String> steps
 Recipe : + Recipe(String title)
 Recipe : + void addIngredients()
-Recipe : + void addMethod()
+Recipe : + void addSteps()
 
 IngredientList : - HashMap<Ingredient ingredient, float amount>
 IngredientList : + void addIngredient(Ingredient ingredient)
