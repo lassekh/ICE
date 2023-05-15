@@ -1,75 +1,80 @@
 package User;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import Utility.DBConnector;
+import Utility.DBUser;
+import Utility.UI;
+
+import java.util.*;
 
 public class AccountHandler {
 
-    //private Set<Account> accounts = new Set<Account>(){};
+    private Set<Account> accounts = new HashSet<Account>() {
+    };
     //Mail instance variabel
-    private String mail;
+    private String email;
     //Password instance variabel
     private String password;
     //Scanner class to get information from the user
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
+
+    private Account account;
+
+    private AccountHandler accountHandler;
+
+    private UI ui = new UI();
+    private DBUser DB = new DBUser();
 
     public AccountHandler() {
+
     }
 
     public void loginOrCreateUser() {
-        System.out.println("Hi! Which of the following options would you like to proceed with?");
-        System.out.println("1) Create a user");
-        System.out.println("2) Login");
-        System.out.println("Please enter your option below: ");
+        List<String> mainMenu = new ArrayList<>();
+        mainMenu.add("Create a user");
+        mainMenu.add("Login");
+        ui.displayMenu(mainMenu);
+        int input = Integer.parseInt(ui.getInput("Type number:"));
 
         boolean inputValidator = true;
         while (inputValidator) {
             try {
-                int input = scanner.nextInt();
                 if (input == 1) {
-                    // INPUT CREATE USER METHOD
+                    createAccount();
                     inputValidator = false;
                 } else if (input == 2) {
-                    // INPUT LOGIN METHOD
+                    loginForm();
                     inputValidator = false;
                 } else {
-                    System.out.println("Invalid input. Please enter either 1 or 2.");
+                    input = Integer.parseInt(ui.getInput("Invalid input. Please enter either 1 or 2."));
                 }
-            } catch (InputMismatchException e) {
-                System.out.println("I'm sorry, I didn't understand that. Please try again.");
-                scanner.nextLine(); // Clear the invalid input from the scanner
+            } catch (NumberFormatException e) {
+                ui.getInput("You did not type a number. Please try again:"); // Clear the invalid input from the scanner
             }
         }
     }
 
 
-    private String setMail() {
-        boolean inputValidator = true;
-        System.out.println("What's your e-mail?");
-        System.out.println("(Your e-mail must either end with .dk or .com)");
-        while (inputValidator) {
-            String input = scanner.nextLine();
-            if (input.length() > 5 && input.contains("@") && (input.contains(".com")) || input.contains(".dk")) {
-                this.mail = input;
-                inputValidator = false;
-                return input;
+    public String createMail() {
+        boolean isValidEmail = false;
+        while (!isValidEmail) {
+            String inputEmail = ui.getInput("Enter your email address. It must end with .dk or .com: ");
+            if (inputEmail.contains("@") && (inputEmail.endsWith(".com") || inputEmail.endsWith(".dk"))) {
+                email = inputEmail;
+                return email;
             } else {
-                System.out.println("Not correct! Try again");
+                System.out.println("Your inout is invalid. Please try again.");
             }
         }
-        return "";
+        return null;
     }
 
-    private String setPassword() {
-        boolean inputValidator = true;
-        System.out.println("Which passord would you like to create?");
-        System.out.println("Must be at least 5 long");
-        while (inputValidator) {
-            String input = scanner.nextLine();
-            if (input.length() >= 5) {
-                this.password = input;
-                inputValidator = false;
-                return input;
+    public String createPassword() {
+        boolean inputValidPassword = false;
+        while (!inputValidPassword) {
+            String inputPassword = ui.getInput("Enter a password. It must contain at least 5 characters: ");
+            if (inputPassword.length() >= 5) {
+                password = inputPassword;
+                return password;
             } else {
                 System.out.println("Not correct! Try again");
             }
@@ -77,13 +82,59 @@ public class AccountHandler {
         return null;
     }
 
+    public void loginForm() {
+        email = ui.getInput("Enter your email: ");
+        password = ui.getInput("Enter your password: ");
+        if (login(email, password)) {
+            System.out.println("Account with email " + email + " is now logged in.");
+        }
+    }
 
+    public boolean login(String email, String password) {
+        for (Account account : accounts) {
+            if (account.getEmail().equalsIgnoreCase(email) && account.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /*
     public void createAccount() {
-        String mail = setMail();
-        String password = setPassword();
-        //Account account = new (setMail(), setPassword());
-        //accounts.add(account);
+        account = new Account(createMail(), createPassword());
+        accounts.add(account);
+
+        System.out.println(account);
 
     }
 
+     */
+    public void createAccount() {
+
+        boolean isValidEmail = false;
+        while (!isValidEmail) {
+            String inputEmail = ui.getInput("Enter your email address. It must end with .dk or .com: ");
+
+            //TODO email has to be unique. Check is input already exists. if exists let the user know and try with another email
+
+            if (inputEmail.contains("@") && (inputEmail.endsWith(".com") || inputEmail.endsWith(".dk"))) {
+                email = inputEmail;
+                isValidEmail = true;
+            } else {
+                System.out.println("Your inout is invalid. Please try again.");
+            }
+        }
+        boolean isValidPassword = false;
+        while (!isValidPassword) {
+            String inputPassword = ui.getInput("Enter a password. It must contain at least 5 characters: ");
+            if (inputPassword.length() >= 5) {
+                password = inputPassword;
+                isValidPassword = true;
+            } else {
+                System.out.println("Not correct! Try again");
+            }
+        }
+        DB.saveUser(email, password);
+        ui.displayMessage("Congratulation! Your account has been registered successfully.");
+    }
 }

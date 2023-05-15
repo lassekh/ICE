@@ -2,33 +2,66 @@
 'https://plantuml.com/class-diagram
 !pragma layout smetana
 
-Package User{
+class App
+
+package "user"{
 class Account
-class AccountUsers
 class AccountHandler
 class User
+class GroceryList
+}
+
+package "plan"{
+class MealPlan
+class DailyMealPlan
+class Recipe
+class IngredientList
+class Ingredient
+}
+
+package "filters"{
+class Diet
+class Recommendation
+class FoodHandler
+}
+
+package "util"{
+class UI
+interface DBConnector
+class DBUser
+class DBRecipe
+class DBIngredients
+}
 
 'Label on relations
-Account <|-- AccountUsers
+App *-- Account
+App *-- Recipe
 AccountHandler *-- Account
-AccountUsers *-- User
+Account *-- User
+Account *-- MealPlan
+MealPlan "1" *-- "has 1..many" DailyMealPlan
+DailyMealPlan "1" *-- "has 1..3" Recipe
+Recipe *-- IngredientList
+IngredientList *-- Ingredient
+DBConnector <|-- DBUser
+DBConnector <|-- DBRecipe
+DBConnector <|-- DBIngredients
 
 'Methods and attributes
-Account : - String mail;
+Account : - String email;
 Account : - String password;
-Account : + Account(String mail, String password)
-Account : + String getMail();
+Account : - List<User> accountUsers
+Account : + Account(String email, String password)
+Account : + String getEmail();
 Account : + String getPassword();
+Account : + User createUser(String name, int age)
+Account : + void deleteUser(String name)
 
-AccountUsers : - User[] userNames = new User [5]];
-AccountUsers : + void createUser();
-AccountUsers : + void deleteUser();
-
+AccountHandler : + void createUser();
+AccountHandler : + void deleteUser();
 AccountHandler : + void login();
 AccountHandler : + void createAccount();
 AccountHandler : - Set<Account> accounts;
-'AccountHandler : - void chooseName();
-'AccountHandler : - void createName();
 
 User : - String name;
 User : - int age;
@@ -36,73 +69,37 @@ User : + User(String name, int age);
 User : + String getName();
 User : + int getAge();
 
-}
+MealPlan : - List<DailyMealPlan> myMealPlan
+MealPlan : + MealPlan(List<DailyMealPlan> myMealPlan)
+MealPlan : + String chooseDate(String dateChosen)
+MealPlan : + Recipe chooseRecipe(String recipeName)
+MealPlan : + void addDailyMealPlan(String date, Recipe meal)
+MealPlan : + void deleteDailyMealPlan(String date)
 
-Package Mealplan{
-class Mealplan
-Mealplan : - HashMap<Date, Recipe> ListOfMeals
-Mealplan : + Mealplan(HashMap<Date, DailyMealplan> ListOfMeals)
+DailyMealPlan : - String date
+DailyMealPlan : - Recipe dinner
+DailyMealPlan : + DailyMealPlan(String date, Recipe meal)
+DailyMealPlan : + void changeDate(String newDate)
 
-class DailyMealplan
-DailyMealplan : - Recipe dinner
-DailyMealplan : - Recipe lunch
-DailyMealplan : - Recipe breakfast
-DailyMealplan : + DailyMealplan(Recipe dinner)
-DailyMealplan : + DailyMealplan(Recipe dinner, Recipe lunch)
-DailyMealplan : + DailyMealplan(Recipe breakfast, Recipe lunch, Recipe dinner)
-
-class Recipe
 Recipe : - String title
+Recipe : - String description
 Recipe : - int prepTime
-Recipe : - HashMap<Ingredient i, double amount>
-Recipe : Recipe(String title, int time, HashMap<Ingredient i, double amount>)
+Recipe : - int cookTime
+Recipe : - IngredientList ingredients
+Recipe : - List<String> method
+Recipe : + Recipe(String title)
+Recipe : + void addIngredients()
+Recipe : + void addMethod()
 
-class Ingredient
+IngredientList : - HashMap<Ingredient ingredient, float amount>
+IngredientList : + void addIngredient(Ingredient ingredient)
+IngredientList : + void addAmount(float amount)
+
 Ingredient : - String name
 Ingredient : - String category
-Ingredient : - HashMap<String nutrition, double content>
+Ingredient : - HashMap<String nutrition, float content>
 
-class Grocerylist
-Grocerylist : HashSet<Ingredient> list
-
-'Label on relations
-Mealplan "1" *-- "has 1..many" DailyMealplan
-DailyMealplan "1" *-- "has 1..3" Recipe
-Recipe *-- Ingredient
-Grocerylist *-- Ingredient
-}
-
-Package Filters{
-class Diet
-'behøves felter vedr. diæt typer?
-'Diet : - String lowCarb;
-'Diet : - String keto;
-
-Diet : + Set<Recipe> getDietType(String dietType);
-Diet : + Set<Recipe> getAllergies(String allergiesOf);
-'evt i fremtiden en liste hvor begge kriterier indgår
-
-class Recommendation
-Recommendation : + Set<Recipe> getRandomRecipe();
-Recommendation : + Set<Recipe> getRandomRecipe(String dontLike);
-
-class FoodHandler
-FoodHandler : - List<Ingredient> ownRecipe;
-FoodHandler : + addIngredientsToList();
-FoodHandler : + removeIngredientFromList();
-
-}
-
-
-
-Package Utility{
-'class IO
-class UI
-interface DBConnector
-class DBUser
-class DBRecipe
-class DBIngredients
-
+GroceryList : HashSet<Ingredient> myGroceryList
 
 UI : - Scanner scan = new Scanner(System.in);
 UI : + void displayMessage(String msg);
@@ -123,14 +120,16 @@ DBRecipe : + void saveData(Recipe dinner);
 DBIngredients : + Set<Ingredient> readRecipe();
 DBIngredients : + void saveData(Ingredients ingredient);
 
-}
+Diet : + Set<Recipe> filterByDietType(String dietType);
+Diet : + Set<Recipe> filterByAllergies(String allergiesOf);
+Diet : + Set<Recipe> filterByDietAllergy
 
+Recommendation : + Set<Recipe> getRandomRecipe();
+Recommendation : + Set<Recipe> getRandomRecipe(String dontLike);
 
-'Label on relations
-DBConnector <|-- DBUser
-DBConnector <|-- DBRecipe
-DBConnector <|-- DBIngredients
-
+FoodHandler : - List<Ingredient> ownRecipe;
+FoodHandler : + addIngredientsToList();
+FoodHandler : + removeIngredientFromList();
 'User *-- Grocerylist
 'Recipe *-- Diet
 'Recipe *-- DBConnector
