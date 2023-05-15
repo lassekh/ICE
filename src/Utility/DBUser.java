@@ -71,7 +71,7 @@ public class DBUser implements DBConnector{
 
             //STEP 3: Execute a query
             System.out.println("Creating statement...");
-            String sql = "SELECT * FROM ICE-Project.accounts";
+            String sql = "SELECT * FROM accounts";
             stmt = conn.prepareStatement(sql);
 
             ResultSet rs = stmt.executeQuery(sql);
@@ -114,9 +114,6 @@ public class DBUser implements DBConnector{
                 se.printStackTrace();
             }//end finally try
         }//end try
-
         return null;
     }
-
-
 }
