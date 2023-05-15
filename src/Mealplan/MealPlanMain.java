@@ -11,7 +11,7 @@ public class MealPlanMain {
 
         List<DailyMealPlan> listOfDailyMealPlan = new ArrayList<>();
 
-        DailyMealPlan dailyMealPlan = new DailyMealPlan("test",recipe1);
+        //DailyMealPlan dailyMealPlan = new DailyMealPlan("test",recipe1);
 
         MealPlan mealPlan = new MealPlan(listOfDailyMealPlan);
 
