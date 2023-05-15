@@ -4,7 +4,7 @@ public class UserMain {
 
     public static void main(String[] args) {
         AccountHandler ah = new AccountHandler();
-        ah.loginOrCreateUser();
+        ah.mainMenu();
         //ah.createAccount();
     }
 

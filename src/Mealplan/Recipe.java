@@ -10,6 +10,13 @@ public class Recipe {
     private IngredientList ingredients;
     List<String> method;
 
+    public Recipe(String title, String description, int prepTime, int cookTime){
+        this.title = title;
+        this.description = description;
+        this.prepTime = prepTime;
+        this.cookTime = cookTime;
+    }
+
     public Recipe(String title){
 
     }
