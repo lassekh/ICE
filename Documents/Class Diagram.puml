@@ -34,7 +34,7 @@ class DBIngredients
 }
 
 'Label on relations
-App *-- Account
+App *-- AccountHandler
 App *-- Recipe
 AccountHandler *-- Account
 Account *-- User
