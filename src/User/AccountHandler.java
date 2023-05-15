@@ -8,19 +8,12 @@ import java.util.*;
 
 public class AccountHandler {
 
-    private Set<Account> accounts = new HashSet<Account>() {
-    };
+    private Set<Account> accounts;
     //Mail instance variabel
     private String email;
     //Password instance variabel
     private String password;
-    //Scanner class to get information from the user
-    private Scanner scanner;
-
-    private Account account;
-
-    private AccountHandler accountHandler;
-
+    private Account onlineAccount; //Lasse
     private UI ui = new UI();
     private DBUser DB = new DBUser();
 
@@ -48,44 +41,17 @@ public class AccountHandler {
         }
     }
 
-
-    public String createMail() {
-        boolean isValidEmail = false;
-        while (!isValidEmail) {
-            String inputEmail = ui.getInput("Enter your email address. It must end with .dk or .com: ");
-            if (inputEmail.contains("@") && (inputEmail.endsWith(".com") || inputEmail.endsWith(".dk"))) {
-                email = inputEmail;
-                return email;
-            } else {
-                System.out.println("Your inout is invalid. Please try again.");
-            }
-        }
-        return null;
-    }
-
-    public String createPassword() {
-        boolean inputValidPassword = false;
-        while (!inputValidPassword) {
-            String inputPassword = ui.getInput("Enter a password. It must contain at least 5 characters: ");
-            if (inputPassword.length() >= 5) {
-                password = inputPassword;
-                return password;
-            } else {
-                System.out.println("Not correct! Try again");
-            }
-        }
-        return null;
-    }
-
     public void loginForm() {
         email = ui.getInput("Enter your email: ");
         password = ui.getInput("Enter your password: ");
-        if (login(email, password)) {
-            System.out.println("Account with email " + email + " is now logged in.");
+        if(login(email, password)){
+            ui.displayMessage("Account with email " + email + " is now logged in.");
+            onlineAccount = new Account(email,password); //Lasse
         }
     }
 
     public boolean login(String email, String password) {
+        accounts = DB.readUserData(); //Lasse
         for (Account account : accounts) {
             if (account.getEmail().equalsIgnoreCase(email) && account.getPassword().equals(password)) {
                 return true;
@@ -94,16 +60,6 @@ public class AccountHandler {
         return false;
     }
 
-    /*
-    public void createAccount() {
-        account = new Account(createMail(), createPassword());
-        accounts.add(account);
-
-        System.out.println(account);
-
-    }
-
-     */
     public void createAccount() {
         boolean isValidEmail = false;
         while (!isValidEmail) {
@@ -141,5 +97,14 @@ public class AccountHandler {
         }
         DB.saveUser(email, password);
         ui.displayMessage("Congratulation! Your account has been registered successfully.");
+        login(email, password); //Lasse
+    }
+    //Lasse
+    public Account getOnlineAccount() {
+        return onlineAccount;
+    }
+    //Lasse
+    public void setOnlineAccount(Account onlineAccount) {
+        this.onlineAccount = onlineAccount;
     }
 }

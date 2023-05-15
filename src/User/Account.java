@@ -1,15 +1,17 @@
 package User;
 
-import java.util.ArrayList;
+
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Scanner;
+import Mealplan.MealPlan;
+
 
 
 public class Account {
     private String email;
     private String password;
     private List<User> users;
+    private MealPlan myMealplan = new MealPlan(); //Lasse
 
     public Account(String email, String password){
         this.email = email;
@@ -32,6 +34,10 @@ public class Account {
     public void deleteUser(String name){
         //this.users er en ArrayList af denne Accounts users
         users.remove(name);
+    }
+    //Lasse
+    public MealPlan getMyMealplan() {
+        return myMealplan;
     }
 
     @Override

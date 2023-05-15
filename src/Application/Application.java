@@ -2,6 +2,7 @@ package Application;
 
 import Mealplan.DailyMealPlan;
 import Mealplan.Recipe;
+import User.AccountHandler;
 import Utility.UI;
 
 import java.util.ArrayList;
@@ -12,11 +13,16 @@ public class Application {
     List<String> options = new ArrayList<>();
     private String welcomeMessage = "Welcome!";
     UI ui = new UI();
+    private AccountHandler ah = new AccountHandler(); //Lasse
 
     public Application() {
+        startMenu(); //Lasse
         mainMenu();
     }
-
+    //Lasse
+    public void startMenu(){
+        ah.loginOrCreateUser();
+    }
 
     public void mainMenu() {
         List<String> options = new ArrayList<>();
@@ -31,9 +37,20 @@ public class Application {
         }
 
     }
-
+    //Lasse
     public void showMealPlan() {
-        System.out.println("showMealPlan method: Finish the method please");
+        try {
+            if (ah.getOnlineAccount().getMyMealplan() != null) {
+                ui.displayMessage("Your meal plan: " + ah.getOnlineAccount().getMyMealplan());
+            }
+        }catch(NullPointerException e){
+            String input = ui.getInput("You don't have a meal plan. Do you want to create one? Y/N");
+            if(input.equalsIgnoreCase("y")){
+                createMealPlan();
+            }else{
+                mainMenu();
+            }
+        }
     }
 
     public void createMealPlan() {

@@ -5,6 +5,9 @@ import java.util.List;
 public class MealPlan {
 
     List<DailyMealPlan> myMealPlan;
+    public MealPlan(){
+        //Dummy constructor made by Lasse. Delete at som point.
+    }
 
     public MealPlan(List<DailyMealPlan> myMealPlan){
         this.myMealPlan = myMealPlan;
