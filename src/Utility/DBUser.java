@@ -8,9 +8,11 @@ import java.util.Set;
 
 public class DBUser implements DBConnector{
 
+    Connection conn = null;
+    PreparedStatement stmt = null;
+
+
     public void saveUser(String email, String password) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
         try {
             //STEP 1: Register JDBC driver
             Class.forName("com.mysql.jdbc.Driver");
@@ -59,8 +61,6 @@ public class DBUser implements DBConnector{
     }
 
     public Set<Account> readUserData() {
-        Connection conn = null;
-        PreparedStatement stmt = null;
         try {
             //STEP 1: Register JDBC driver
             Class.forName("com.mysql.jdbc.Driver");
@@ -71,7 +71,7 @@ public class DBUser implements DBConnector{
 
             //STEP 3: Execute a query
             System.out.println("Creating statement...");
-            String sql = "SELECT * FROM ICE-Project.accounts";
+            String sql = "SELECT * FROM accounts";
             stmt = conn.prepareStatement(sql);
 
             ResultSet rs = stmt.executeQuery(sql);
@@ -114,9 +114,6 @@ public class DBUser implements DBConnector{
                 se.printStackTrace();
             }//end finally try
         }//end try
-
         return null;
     }
-
-
 }

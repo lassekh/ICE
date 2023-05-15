@@ -32,23 +32,18 @@ public class AccountHandler {
         List<String> mainMenu = new ArrayList<>();
         mainMenu.add("Create a user");
         mainMenu.add("Login");
-        ui.displayMenu(mainMenu);
-        int input = Integer.parseInt(ui.getInput("Type number:"));
+        int input = ui.displayMenu(mainMenu);
+        //int input = Integer.parseInt(ui.getInput("Type number:"));
 
         boolean inputValidator = true;
         while (inputValidator) {
-            try {
-                if (input == 1) {
-                    createAccount();
-                    inputValidator = false;
-                } else if (input == 2) {
-                    loginForm();
-                    inputValidator = false;
-                } else {
-                    input = Integer.parseInt(ui.getInput("Invalid input. Please enter either 1 or 2."));
-                }
-            } catch (NumberFormatException e) {
-                ui.getInput("You did not type a number. Please try again:"); // Clear the invalid input from the scanner
+
+            if (input == 1) {
+                createAccount();
+                inputValidator = false;
+            } else if (input == 2) {
+                loginForm();
+                inputValidator = false;
             }
         }
     }
@@ -110,18 +105,28 @@ public class AccountHandler {
 
      */
     public void createAccount() {
-
         boolean isValidEmail = false;
         while (!isValidEmail) {
             String inputEmail = ui.getInput("Enter your email address. It must end with .dk or .com: ");
 
-            //TODO email has to be unique. Check is input already exists. if exists let the user know and try with another email
+            Set<Account> setOfAccounts = DB.readUserData();
+            boolean emailExists = false;
+            for (Account account : setOfAccounts) {
+                if (account.getEmail().equalsIgnoreCase(inputEmail)) {
+                    emailExists = true;
+                    break;
+                }
+            }
 
-            if (inputEmail.contains("@") && (inputEmail.endsWith(".com") || inputEmail.endsWith(".dk"))) {
-                email = inputEmail;
-                isValidEmail = true;
+            if (emailExists) {
+                ui.displayMessage("This email is already used. Try another email");
             } else {
-                System.out.println("Your inout is invalid. Please try again.");
+                if (inputEmail.contains("@") && (inputEmail.endsWith(".com") || inputEmail.endsWith(".dk"))) {
+                    email = inputEmail;
+                    isValidEmail = true;
+                } else {
+                    System.out.println("Your input is invalid. Please try again.");
+                }
             }
         }
         boolean isValidPassword = false;
