@@ -1,10 +1,12 @@
 package Mealplan;
 
 public class DailyMealPlan {
-    private String data;
+    private String date;
     private Recipe dinner;
 
-    public DailyMealPlan(String data, Recipe meal) {
+    public DailyMealPlan(String date, Recipe meal) {
+        this.date = date;
+        dinner = meal;
     }
 
     public void changeDate(String newDate) {

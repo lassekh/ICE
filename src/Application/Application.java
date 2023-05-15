@@ -1,5 +1,7 @@
 package Application;
 
+import Mealplan.DailyMealPlan;
+import Mealplan.Recipe;
 import Utility.UI;
 
 import java.util.ArrayList;
@@ -11,25 +13,34 @@ public class Application {
     private String welcomeMessage = "Welcome!";
     UI ui = new UI();
 
-    public Application(){
+    public Application() {
         mainMenu();
     }
 
 
-    public void mainMenu(){
+    public void mainMenu() {
         List<String> options = new ArrayList<>();
         options.add("Show meal plan");
         options.add("create meal plan");
         ui.displayMessage(welcomeMessage);
-        ui.displayMenu(options);
+        int option = ui.displayMenu(options);
+        if (option == 1) {
+            showMealPlan();
+        } else if (option == 2) {
+            createMealPlan();
+        }
 
     }
 
-    public void showMealPlan(){
-        System.out.println("Finish the method please");
+    public void showMealPlan() {
+        System.out.println("showMealPlan method: Finish the method please");
     }
 
-    public void createMealPlan(){
-        System.out.println("Finish the method please");
+    public void createMealPlan() {
+        String date = ui.getInput("Enter the date please");
+        String recipe = ui.getInput("Whats the name of the recipe?");
+
+        Recipe recipe1 = new Recipe(recipe);
+        DailyMealPlan dailyMealPlan = new DailyMealPlan(date, recipe1);
     }
 }
