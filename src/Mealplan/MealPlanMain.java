@@ -22,8 +22,6 @@ public class MealPlanMain {
         //for(Recipe r : recipes) {
         //    System.out.println(r);
         //}
-        MealPlanHandler mph = new MealPlanHandler();
-        mph.chooseRecipeFromDB();
         /*DBRecipe db = new DBRecipe();
         Set<Recipe> recipes = db.readRecipes();
         for(Recipe r : recipes) {
