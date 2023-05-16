@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import Utility.DBRecipe;
-import Utility.UI;
 
 public class MealPlanHandler {
     private UI ui = new UI();
@@ -22,7 +20,6 @@ public class MealPlanHandler {
         options.add("Show a list of recipes");
         options.add("Create your own recipe");
         ui.displayMenu(options);
-        int input = Integer.parseInt(ui.getInput("Choose an option 1 or 2"));
     }
 
     public void createMealPlan() {
@@ -71,8 +68,9 @@ public class MealPlanHandler {
 
                 String title = (ui.getInput("Whats the name of the recipe?"));
                 String description = (ui.getInput("Can you in few words describe what the is?"));
-                int prepTime = Integer.parseInt(ui.getInput("Whats the preparing time for? (in minutes)" + title));
-                int cookTime = Integer.parseInt(ui.getInput("Whats the cooking time for? (in minutes)" + title));
+                int prepTime = Integer.parseInt(ui.getInput("Whats the preparing time for "+ title+"? (in minutes)"));
+                int cookTime = Integer.parseInt(ui.getInput("Whats the cooking time for "+
+                        title+"? (in minutes)"));
 
                 Recipe recipe = new Recipe(title, description, prepTime, cookTime);
 
@@ -97,6 +95,8 @@ public class MealPlanHandler {
 
                     } else {
                         selectedDate = selectedDate.plusDays(1);
+                        dayOfWeek = selectedDate.getDayOfWeek();
+                        weekday = dayOfWeek.toString();
                         ui.displayMessage("Time to add the recipe for The following day: " + weekday + " (" + selectedDate + ")");
 
                     }

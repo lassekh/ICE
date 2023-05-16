@@ -20,12 +20,12 @@ public class DBRecipe implements DBConnector{
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
             System.out.println("Creating statement...");
-            String query = "INSERT INTO recipes VALUES (null,?)"; //null because first column is id.
+            String query = "INSERT INTO created_recipes VALUES (null,?,?,?,?)"; //null because first column is id.
             stmt = conn.prepareStatement(query);
             stmt.setString(1,recipe.getTitle()); //right  now only save recipe with title
-            //stmt.setString(2,recipe.getDescription());
-            //stmt.setInt(3,recipe.getPrepTime());
-            //stmt.setInt(4,recipe.getCookTime());
+            stmt.setString(2,recipe.getDescription());
+            stmt.setInt(3,recipe.getPrepTime());
+            stmt.setInt(4,recipe.getCookTime());
             //stmt.setObject(5,recipe.getIngredients());
             //stmt.setObject(6,recipe.getMethod());
 

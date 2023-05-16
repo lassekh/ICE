@@ -4,21 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bda8e929-68b7-4043-88c6-b08716eb43f7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    <list default="true" id="5c434148-7d4f-4408-8276-e2f1d7abe8a8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICE/User/AccountHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/User/AccountHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mealplan/DailyMealPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/DailyMealPlan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ICE/Mealplan/MealPlanHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/Mealplan/MealPlanHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ICE/Mealplan/MealPlanMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/Mealplan/MealPlanMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ICE/Mealplan/Recipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/Mealplan/Recipe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ICE/Utility/DBRecipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/Utility/DBRecipe.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mealplan/MealPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/MealPlan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mealplan/MealPlanHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/MealPlanHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mealplan/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/AccountHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/AccountHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utility/DBRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/DBRecipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utility/DBUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/DBUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utility/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/UI.java" afterDir="false" />
     </list>
-    <list id="79b6391b-23b2-4cde-b6be-73fd3249f222" name="Changes by baban" comment="" />
-    <list id="b2c8214a-d5bb-4fbf-bb01-766ff4b5ba2c" name="Changes by Lasse" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +65,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.USER">
+  <component name="RunManager" selected="Application.MealPlanMain">
     <configuration name="Application" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Application.ApplicationMain" />
       <module name="ICE" />
