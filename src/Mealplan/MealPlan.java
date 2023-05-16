@@ -21,7 +21,7 @@ public class MealPlan {
         return null;
     }
 
-    void addDailyMealPlan(String data, Recipe meal){
+    void addDailyMealPlan(String date, Recipe meal){
 
     }
 

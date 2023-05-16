@@ -3,11 +3,15 @@ package Mealplan;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
+import Utility.DBRecipe;
 import Utility.UI;
 
 public class MealPlanHandler {
     private UI ui = new UI();
+    private DBRecipe dbRecipe = new DBRecipe();
+    private MealPlan myMealPlan = new MealPlan();
     public void mealPlanOptions(){
         List<String> options = new ArrayList<>();
         options.add("Show a list of recipes");
@@ -35,5 +39,19 @@ public class MealPlanHandler {
 
         System.out.println("Done!");
 
+    }
+
+    public void chooseRecipeFromDB(){
+        Set<Recipe> recipesFromDB = dbRecipe.readRecipes();
+        for(Recipe r : recipesFromDB) {
+            ui.displayMessage(r.getTitle());
+        }
+        int recipeChoice = Integer.parseInt(ui.getInput("Which recipe would you like to choose?"));
+        for(Recipe r : recipesFromDB) {
+            if(r.getId() == recipeChoice) {
+                myMealPlan.addDailyMealPlan(r);
+                ui.displayMessage(r.getTitle() + " added to your meal plan.");
+            }
+        }
     }
 }
