@@ -7,7 +7,7 @@ import java.util.*;
 
 public class AccountHandler {
 
-    private Set<Account> accounts;
+    private Set<Account> accounts = new HashSet<>();
     //Mail instance variabel
     private String email;
     //Password instance variabel
@@ -39,7 +39,7 @@ public class AccountHandler {
             }
         }
     }
-
+//TODO When you try to login with an email that doenst exist you get through... fix
     public void loginForm() {
         email = ui.getInput("Enter your email: ");
         password = ui.getInput("Enter your password: ");
