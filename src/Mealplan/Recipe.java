@@ -7,8 +7,8 @@ public class Recipe {
     private String description;
     private int prepTime;
     private int cookTime;
-    private List<String> ingredients; //change back to type IngredientList at some point
-    private List<String> steps;
+    private List<String> listOfIngredients; //change back to type IngredientList at some point
+    private List<String> listOfSteps;
 
     public Recipe(String title, String description, int cookTime, List<String> ingredients, List<String> steps) {
         //This constructor only uses strings right now, but should take an instance of IngredientList
@@ -16,8 +16,8 @@ public class Recipe {
         this.title = title;
         this.description = description;
         this.cookTime = cookTime;
-        this.ingredients = ingredients;
-        this.steps = steps;
+        this.listOfIngredients = ingredients;
+        this.listOfSteps = steps;
     }
 
     public Recipe(String title, String description, int prepTime, int cookTime){
@@ -53,8 +53,24 @@ public class Recipe {
     public int getCookTime() {
         return cookTime;
     }
+    public String getListOfIngredients(){
+        String ingredient= "";
+        for (String i : listOfIngredients){
+            ingredient += i+", ";
+        }
+        return ingredient;
+    }
+
+    public String getListOfSteps(){
+        String steps= "";
+        for (String s : listOfSteps){
+            steps += s+"\n";
+        }
+        return steps;
+    }
+
     @Override
     public String toString(){
-        return "Title: " + getTitle();
+        return "\nTitle:\n"+ getTitle()+"\n\nIngredients:\n"+ getListOfIngredients()+"\n"+"\nSteps:\n"+getListOfSteps()+"\n--------------------";
     }
 }

@@ -15,6 +15,8 @@ public class MealPlanHandler {
         ui.displayMenu(options);
         int input = Integer.parseInt(ui.getInput("Choose an option 1 or 2"));
     }
+
+
     public void createMealPlan() {
 
         int year = Integer.parseInt(ui.getInput("Which year do you want to start on? in numbers"));

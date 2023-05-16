@@ -70,13 +70,13 @@ public class DBRecipe implements DBConnector{
                 String title = rs.getString("name"); //Maybe change DB column to title?
                 int cookTime = rs.getInt("minutes"); //change column to match Recipe class data
                 String ingredientsStr = rs.getString("ingredients"); //needs to be split up and added as IngredientList
-                String[] ingredientsArr = ingredientsStr.replaceAll(" ", "").split(",");
+                String[] ingredientsArr = ingredientsStr.split(", ");
                 List<String> ingredientList = new ArrayList<>();
                 for(int i = 0; i < ingredientsArr.length; i++){
                     ingredientList.add(ingredientsArr[i]);
                 }
                 String stepsStr = rs.getString("steps"); //needs to be split up and added as List
-                String[] stepsArr = stepsStr.replaceAll(" ","").split(",");
+                String[] stepsArr = stepsStr.split(", ");
                 List<String> listOfSteps = new ArrayList<>();
                 for(int i = 0; i < stepsArr.length; i++){
                     listOfSteps.add(stepsArr[i]);

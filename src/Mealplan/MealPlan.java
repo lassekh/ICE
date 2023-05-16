@@ -21,11 +21,13 @@ public class MealPlan {
         return null;
     }
 
-    void addDailyMealPlan(String data, Recipe meal){
-
+    public void addDailyMealPlan(String day, String date, Recipe meal){
+        DailyMealPlan dailyMealPlan = new DailyMealPlan(day, date, meal);
+        myMealPlan.add(dailyMealPlan);
     }
 
     void deleteDailyMealPlan(String data){
+
 
     }
 }

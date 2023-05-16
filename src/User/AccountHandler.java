@@ -14,7 +14,7 @@ public class AccountHandler {
     private String password;
     private Account onlineAccount; //Lasse
     private UI ui = new UI();
-    private DBUser DB = new DBUser();
+    private DBUser dbUser = new DBUser();
 
     public AccountHandler() {
 
@@ -39,17 +39,39 @@ public class AccountHandler {
             }
         }
     }
-//TODO When you try to login with an email that doenst exist you get through... fix
+
     public void loginForm() {
         email = ui.getInput("Enter your email: ");
         password = ui.getInput("Enter your password: ");
-        if(login(email, password)){
+        if(loginValidator(email, password)){
             ui.displayMessage("Account with email " + email + " is now logged in.");
+        }else{
+            List<String> options = new ArrayList<>();
+            options.add("Try again");
+            options.add("Create account");
+            options.add("Type Q to quit the program");
+
+            ui.displayMessage("The email and/or password you entered is wrong.");
+
+            int option = ui.displayMenu(options);
+
+            switch (option) {
+                case 1:
+                    loginForm();
+                    break;
+                case 2:
+                    createAccount();
+                    break;
+                case 3:
+                    System.exit(0);
+            }
+
         }
     }
 
-    public boolean login(String email, String password) {
-        accounts = DB.readUserData(); //Lasse
+
+    public boolean loginValidator(String email, String password) {
+        accounts = dbUser.readUserData(); //Lasse
         for (Account account : accounts) {
             if (account.getEmail().equalsIgnoreCase(email) && account.getPassword().equals(password)) {
                 onlineAccount = new Account(email,password); //Lasse
@@ -64,7 +86,7 @@ public class AccountHandler {
         while (!isValidEmail) {
             String inputEmail = ui.getInput("Enter your email address. It must end with .dk or .com: ");
 
-            Set<Account> setOfAccounts = DB.readUserData();
+            Set<Account> setOfAccounts = dbUser.readUserData();
             boolean emailExists = false;
             for (Account account : setOfAccounts) {
                 if (account.getEmail().equalsIgnoreCase(inputEmail)) {
@@ -94,9 +116,9 @@ public class AccountHandler {
                 System.out.println("Not correct! Try again");
             }
         }
-        DB.saveUser(email, password);
+        dbUser.saveUser(email, password);
         ui.displayMessage("Congratulation! Your account has been registered successfully.");
-        login(email, password); //Lasse
+        loginValidator(email, password); //Lasse
     }
     //Lasse
     public Account getOnlineAccount() {

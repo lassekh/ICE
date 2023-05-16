@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bda8e929-68b7-4043-88c6-b08716eb43f7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICE/Application/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/Application/Application.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ICE/User/AccountHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/User/AccountHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mealplan/DailyMealPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/DailyMealPlan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mealplan/MealPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/MealPlan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mealplan/MealPlanHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/MealPlanHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mealplan/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/Recipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/User/AccountHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/AccountHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utility/DBRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/DBRecipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utility/DBUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/DBUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utility/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/UI.java" afterDir="false" />
     </list>
     <list id="79b6391b-23b2-4cde-b6be-73fd3249f222" name="Changes by baban" comment="" />
     <list id="b2c8214a-d5bb-4fbf-bb01-766ff4b5ba2c" name="Changes by Lasse" comment="" />
@@ -64,9 +70,23 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Application">
+  <component name="RunManager" selected="Application.USER">
     <configuration name="Application" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Application.ApplicationMain" />
+      <module name="ICE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MAIN" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="ICE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MealPlanMain" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Mealplan.MealPlanMain" />
       <module name="ICE" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -82,6 +102,8 @@
     <list>
       <item itemvalue="Application.Application" />
       <item itemvalue="Application.USER" />
+      <item itemvalue="Application.MAIN" />
+      <item itemvalue="Application.MealPlanMain" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -105,6 +127,7 @@
       <workItem from="1684087530516" duration="5796000" />
       <workItem from="1684130917448" duration="13082000" />
       <workItem from="1684175328691" duration="3269000" />
+      <workItem from="1684216369004" duration="10498000" />
     </task>
     <servers />
   </component>
@@ -120,7 +143,7 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Utility/DBUser.java</url>
-          <line>87</line>
+          <line>93</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
