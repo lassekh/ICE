@@ -18,11 +18,11 @@ public class MealPlanHandler {
         ui.displayMenu(options);
         int input = Integer.parseInt(ui.getInput("Choose an option 1 or 2"));
     }
-    
+
     public void createMealPlan() {
 
         List<String> options1 = new ArrayList<>();
-        options1.add("Select your own date");
+        options1.add("Select a date you wish to start from");
         options1.add("Use the current date");
         int input1 = ui.displayMenu(options1);
 
