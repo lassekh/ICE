@@ -7,9 +7,15 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
+import Utility.DBRecipe;
+import Utility.UI;
 
 public class MealPlanHandler {
     private UI ui = new UI();
+    private DBRecipe dbRecipe = new DBRecipe();
+    private MealPlan myMealPlan = new MealPlan();
 
     public void mealPlanOptions() {
         List<String> options = new ArrayList<>();
@@ -101,7 +107,21 @@ public class MealPlanHandler {
                 }
 
             } else if ((inputMenu.equalsIgnoreCase(String.valueOf(2)))) {
-                //chooseRecipeFromDB();
+                chooseRecipeFromDB(weekday, selectedDate.toString()); //Is toString right?
+            }
+        }
+    }
+
+    public void chooseRecipeFromDB(String day, String date) {
+        Set<Recipe> recipesFromDB = dbRecipe.readRecipes();
+        for (Recipe r : recipesFromDB) {
+            ui.displayMessage(r.getTitle());
+        }
+        int recipeChoice = Integer.parseInt(ui.getInput("Which recipe would you like to choose?"));
+        for (Recipe r : recipesFromDB) {
+            if (r.getId() == recipeChoice) {
+                myMealPlan.addDailyMealPlan(date, day, r);
+                ui.displayMessage(r.getTitle() + " added to your meal plan.");
             }
         }
     }

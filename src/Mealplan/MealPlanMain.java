@@ -17,6 +17,11 @@ public class MealPlanMain {
         //DailyMealPlan dailyMealPlan = new DailyMealPlan("test",recipe1);
 
         //MealPlan mealPlan = new MealPlan(listOfDailyMealPlan);
+        //DBRecipe db = new DBRecipe();
+        //Set<Recipe> recipes = db.readRecipes();
+        //for(Recipe r : recipes) {
+        //    System.out.println(r);
+        //}
         /*DBRecipe db = new DBRecipe();
         Set<Recipe> recipes = db.readRecipes();
         for(Recipe r : recipes) {

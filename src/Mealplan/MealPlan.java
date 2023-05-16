@@ -24,6 +24,7 @@ public class MealPlan {
     public void addDailyMealPlan(String date, String day, Recipe meal){
         DailyMealPlan dailyMealPlan = new DailyMealPlan(date, day, meal);
         myMealPlan.add(dailyMealPlan);
+        
     }
 
     void deleteDailyMealPlan(String data){

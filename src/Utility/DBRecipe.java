@@ -67,6 +67,7 @@ public class DBRecipe implements DBConnector{
             Set<Recipe> setOfRecipes = new HashSet<>();
 
             while(rs.next()){
+                int id = rs.getInt("id");
                 String title = rs.getString("name"); //Maybe change DB column to title?
                 int cookTime = rs.getInt("minutes"); //change column to match Recipe class data
                 String ingredientsStr = rs.getString("ingredients"); //needs to be split up and added as IngredientList
@@ -83,7 +84,7 @@ public class DBRecipe implements DBConnector{
                 }
                 String description = rs.getString("description");
 
-                setOfRecipes.add(new Recipe(title, description, cookTime, ingredientList, listOfSteps));
+                setOfRecipes.add(new Recipe(id, title, description, cookTime, ingredientList, listOfSteps));
             }
             rs.close();
             stmt.close();
