@@ -1,3 +1,3 @@
 # Nice to have features:
 
-1. Insert idea
+1. Grocery list with all the ingredients needed

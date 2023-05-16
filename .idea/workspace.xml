@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bda8e929-68b7-4043-88c6-b08716eb43f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Mealplan/MealPlanHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/MealPlanHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/Class Diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/Class Diagram.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/Nice To Have.md" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/Nice To Have.md" afterDir="false" />
     </list>
     <list id="79b6391b-23b2-4cde-b6be-73fd3249f222" name="Changes by baban" comment="" />
     <list id="b2c8214a-d5bb-4fbf-bb01-766ff4b5ba2c" name="Changes by Lasse" comment="" />
@@ -60,7 +62,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Application.ApplicationMain" />
       <module name="ICE" />
@@ -102,6 +104,7 @@
       <workItem from="1684130917448" duration="13082000" />
       <workItem from="1684175328691" duration="3269000" />
       <workItem from="1684221284963" duration="6685000" />
+      <workItem from="1684230238415" duration="503000" />
     </task>
     <servers />
   </component>

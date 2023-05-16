@@ -8,7 +8,6 @@ package "user"{
 class Account
 class AccountHandler
 class User
-class GroceryList
 }
 
 package "plan"{
