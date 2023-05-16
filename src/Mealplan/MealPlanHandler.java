@@ -32,17 +32,18 @@ public class MealPlanHandler {
         int year = 0;
         int month = 0;
         int day = 0;
+        boolean selectDay = false;
 
         if (input1 == 1) {
             year = Integer.parseInt(ui.getInput("Which year do you want to start on? (in numbers)"));
             month = Integer.parseInt(ui.getInput("Which month do you want to start on? (in numbers)"));
             day = Integer.parseInt(ui.getInput("Which day do you wan to start on? (in numbers)"));
             selectedDate = LocalDate.of(year, month, day);
+            selectDay = true;
 
         } else if (input1 == 2) {
             selectedDate = LocalDate.now();
-            selectedDate = selectedDate.plusDays(1);
-            System.out.println(selectedDate);
+            selectDay = false;
         }
 
         int counter = 0;
@@ -81,11 +82,19 @@ public class MealPlanHandler {
                 String input = String.valueOf(ui.displayMenu(options));
 
                 if (input.equalsIgnoreCase("1")) {
-                    counter++;
-                    selectedDate = LocalDate.of(year, month, day + counter);
-                    dayOfWeek = selectedDate.getDayOfWeek();
-                    weekday = dayOfWeek.toString();
-                    ui.displayMessage("Time to add the recipe for The following day: " + weekday + " (" + selectedDate + ")");
+                    if (selectDay) {
+                        counter++;
+                        selectedDate = LocalDate.of(year, month, day + counter);
+                        dayOfWeek = selectedDate.getDayOfWeek();
+                        weekday = dayOfWeek.toString();
+                        ui.displayMessage("Time to add the recipe for The following day: " + weekday + " (" + selectedDate + ")");
+
+                    } else {
+                        selectedDate = selectedDate.plusDays(1);
+                        ui.displayMessage("Time to add the recipe for The following day: " + weekday + " (" + selectedDate + ")");
+
+                    }
+
                 } else if (input.equalsIgnoreCase("2")) {
                     ui.displayMessage("Your data has been saved!");
                     inputValidator = false;

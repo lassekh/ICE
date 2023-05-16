@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bda8e929-68b7-4043-88c6-b08716eb43f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICE/Application.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICE/Application/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/Application/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICE/Mealplan/MealPlanMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/Mealplan/MealPlanMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICE/User/AccountHandler$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICE/User/AccountHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/User/AccountHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mealplan/MealPlanHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/MealPlanHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mealplan/MealPlanMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/MealPlanMain.java" afterDir="false" />
     </list>
     <list id="79b6391b-23b2-4cde-b6be-73fd3249f222" name="Changes by baban" comment="" />
     <list id="b2c8214a-d5bb-4fbf-bb01-766ff4b5ba2c" name="Changes by Lasse" comment="" />
@@ -109,7 +101,7 @@
       <workItem from="1684087530516" duration="5796000" />
       <workItem from="1684130917448" duration="13082000" />
       <workItem from="1684175328691" duration="3269000" />
-      <workItem from="1684221284963" duration="6055000" />
+      <workItem from="1684221284963" duration="6685000" />
     </task>
     <servers />
   </component>
