@@ -48,20 +48,42 @@ DBConnector <|-- DBRecipe
 DBConnector <|-- DBIngredients
 
 'Methods and attributes
+Application : - List>String> options = new ArrayList<>();
+Application : - String welcomeMessage = "Welcome!";
+Application : - UI ui = new UI();
+Application : - AccountHandler ah = new AccountHandler();
+Application : + Application();
+Application : + void startMenu();
+Application : + void menu();
+Application : + void showMealPlan();
+Application : + void createMealPLan();
+
+
 Account : - String email;
 Account : - String password;
-Account : - List<User> accountUsers
+Account : - List<User> users;
+Account : - MealPlan myMealPlan;
 Account : + Account(String email, String password)
 Account : + String getEmail();
 Account : + String getPassword();
 Account : + User createUser(String name, int age)
 Account : + void deleteUser(String name)
+Account : + getMyMealPlan():
+Account : + String toString();
 
-AccountHandler : + void createUser();
-AccountHandler : + void deleteUser();
+AccountHandler : - Set<Account> accounts;
+AccountHandler : - String email;
+AccountHandler : - String password;
+AccountHandler : - Account onlineAccount;
+AccountHandler : - UI ui = new UI();
+AccountHandler : - DBUser dbUser = new DBUser();
+AccountHandler : + AccountHandler();
+AccountHandler : + void mainMenu();
+AccountHandler : + void loginForm();
 AccountHandler : + void login();
 AccountHandler : + void createAccount();
-AccountHandler : - Set<Account> accounts;
+AccountHandler : + Account getOnlineAccount();
+
 
 User : - String name;
 User : - int age;
@@ -71,51 +93,63 @@ User : + int getAge();
 
 MealPlan : - List<DailyMealPlan> myMealPlan
 MealPlan : + MealPlan(List<DailyMealPlan> myMealPlan)
-MealPlan : + String chooseDate(String dateChosen)
+MealPlan : + String chooseData(String dateChosen)
 MealPlan : + Recipe chooseRecipe(String recipeName)
 MealPlan : + void addDailyMealPlan(String date, Recipe meal)
 MealPlan : + void deleteDailyMealPlan(String date)
 
 DailyMealPlan : - String date
 DailyMealPlan : - Recipe dinner
-DailyMealPlan : + DailyMealPlan(String date, Recipe meal)
+DailyMealPlan : + DailyMealPlan(LocalDate date, Recipe meal)
 DailyMealPlan : + void changeDate(String newDate)
 
 Recipe : - String title
 Recipe : - String description
 Recipe : - int prepTime
 Recipe : - int cookTime
-Recipe : - IngredientList ingredients
-Recipe : - List<String> steps
+Recipe : - String ingredients;
+Recipe : - String steps;
+Recipe : + Recipe(String title, String description, int cookTime, String ingredients, String steps)
+Recipe : + Recipe(String title, String description, int prepTime, int cookTime)
 Recipe : + Recipe(String title)
 Recipe : + void addIngredients()
 Recipe : + void addSteps()
+Recipe : + String getTitle();
+Recipe : + String getDescription();
+Recipe : + int getPrepTime();
+Recipe : + int getCookTime();
+Recipe : + IngredientList getIngredients();
+Recipe : + List<String> getMethod();
 
-IngredientList : - HashMap<Ingredient ingredient, float amount>
+
+IngredientList : - HashMap<Ingredient, float> ingredientAmount;
 IngredientList : + void addIngredient(Ingredient ingredient)
 IngredientList : + void addAmount(float amount)
 
 Ingredient : - String name
 Ingredient : - String category
-Ingredient : - HashMap<String nutrition, float content>
+Ingredient : - HashMap<String, float> nutritionContent;
 
 GroceryList : HashSet<Ingredient> myGroceryList
 
-UI : - Scanner scan = new Scanner(System.in);
+UI : - Scanner scanner = new Scanner(System.in);
 UI : + void displayMessage(String msg);
 UI : + String getInput(String msg);
+UI : + int displayMenu(List<String> menuItems);
 
-DBConnector : - DBPassword;
-DBConnector : - static final String DB_URL;
-DBConnector : - static final String USER;
-DBConnector : + void saveData();
-DBConnector : + Set<Object> readData();
+DBConnector : - static final String DB_URL = "jdbc:mysql://34.141.56.218/mealplanner";
+DBConnector : - static final String USER = "root";
+DBConnector : - static final String PASS = "LAHY-Dat23!";
 
-DBUser : + void saveData(String username, password)
-DBUser : + Set<User> readUserData();
+DBUser : Connection conn = null;
+DBUser : PreparedStatement stmt = null;
+DBUser : + void saveUser(String email, String password);
+DBUser : + Set<Account> readUserData();
 
-DBRecipe : + Set<Recipe> readRecipe();
-DBRecipe : + void saveData(Recipe dinner);
+DBRecipe : Connection conn = null;
+DBRecipe : PreparedStatement stmt = null;
+DBRecipe : + void saveRecipe(Recipe recipe);
+DBRecipe : + Set<Recipe> readRecipes();
 
 DBIngredients : + Set<Ingredient> readRecipe();
 DBIngredients : + void saveData(Ingredients ingredient);
