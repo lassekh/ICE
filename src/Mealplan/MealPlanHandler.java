@@ -61,6 +61,7 @@ public class MealPlanHandler {
 
         boolean inputValidator = true;
 
+
         while (inputValidator) {
             String inputMenu = String.valueOf(ui.displayMenu(optionsMenu));
 
@@ -68,9 +69,9 @@ public class MealPlanHandler {
 
                 String title = (ui.getInput("Whats the name of the recipe?"));
                 String description = (ui.getInput("Can you in few words describe what the is?"));
-                int prepTime = Integer.parseInt(ui.getInput("Whats the preparing time for "+ title+"? (in minutes)"));
-                int cookTime = Integer.parseInt(ui.getInput("Whats the cooking time for "+
-                        title+"? (in minutes)"));
+                int prepTime = Integer.parseInt(ui.getInput("Whats the preparing time for " + title + "? (in minutes)"));
+                int cookTime = Integer.parseInt(ui.getInput("Whats the cooking time for " +
+                        title + "? (in minutes)"));
 
                 Recipe recipe = new Recipe(title, description, prepTime, cookTime);
 
@@ -92,12 +93,16 @@ public class MealPlanHandler {
                         dayOfWeek = selectedDate.getDayOfWeek();
                         weekday = dayOfWeek.toString();
                         ui.displayMessage("Time to add the recipe for The following day: " + weekday + " (" + selectedDate + ")");
+                        String date = selectedDate.toString();
+                        myMealPlan.addDailyMealPlan(date,weekday,recipe);
 
                     } else {
                         selectedDate = selectedDate.plusDays(1);
                         dayOfWeek = selectedDate.getDayOfWeek();
                         weekday = dayOfWeek.toString();
                         ui.displayMessage("Time to add the recipe for The following day: " + weekday + " (" + selectedDate + ")");
+                        String date = selectedDate.toString();
+                        myMealPlan.addDailyMealPlan(date,weekday,recipe);
 
                     }
 
@@ -108,14 +113,40 @@ public class MealPlanHandler {
 
             } else if ((inputMenu.equalsIgnoreCase(String.valueOf(2)))) {
                 chooseRecipeFromDB(weekday, selectedDate.toString()); //Is toString right?
+                List<String> options = new ArrayList<>();
+                options.add("Do you want to create one for the next day?");
+                options.add("Do you want to save and go back to main menu?");
+                String input = String.valueOf(ui.displayMenu(options));
+
+                if (input.equalsIgnoreCase("1")) {
+                    if (selectDay) {
+                        counter++;
+                        selectedDate = LocalDate.of(year, month, day + counter);
+                        dayOfWeek = selectedDate.getDayOfWeek();
+                        weekday = dayOfWeek.toString();
+                        ui.displayMessage("Time to add the recipe for The following day: " + weekday + " (" + selectedDate + ")");
+                        String date = selectedDate.toString();
+                    } else {
+                        selectedDate = selectedDate.plusDays(1);
+                        dayOfWeek = selectedDate.getDayOfWeek();
+                        weekday = dayOfWeek.toString();
+                        ui.displayMessage("Time to add the recipe for The following day: " + weekday + " (" + selectedDate + ")");
+                    }
+
+                } else if (input.equalsIgnoreCase("2")) {
+                    ui.displayMessage("Your data has been saved!");
+                    inputValidator = false;
+                }
             }
         }
     }
 
+
     public void chooseRecipeFromDB(String day, String date) {
         Set<Recipe> recipesFromDB = dbRecipe.readRecipes();
         for (Recipe r : recipesFromDB) {
-            ui.displayMessage(r.getTitle());
+            ui.displayMessage(r.getId() + ") " + r.getTitle());
+
         }
         int recipeChoice = Integer.parseInt(ui.getInput("Which recipe would you like to choose?"));
         for (Recipe r : recipesFromDB) {

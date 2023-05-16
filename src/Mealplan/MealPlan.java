@@ -1,17 +1,12 @@
 package Mealplan;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MealPlan {
 
-    List<DailyMealPlan> myMealPlan;
-    public MealPlan(){
-        //Dummy constructor made by Lasse. Delete at som point.
-    }
+    private List<DailyMealPlan> myMealPlan = new ArrayList<>();
 
-    public MealPlan(List<DailyMealPlan> myMealPlan){
-        this.myMealPlan = myMealPlan;
-    }
 
     String chooseData(String dataChosen){
         return dataChosen;
