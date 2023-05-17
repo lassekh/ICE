@@ -17,13 +17,6 @@ public class MealPlanHandler {
     private MealPlan myMealPlan = new MealPlan();
     public AccountHandler accountHandler = new AccountHandler();
 
-    public void mealPlanOptions() {
-        List<String> options = new ArrayList<>();
-        options.add("Show a list of recipes");
-        options.add("Create your own recipe");
-        ui.displayMenu(options);
-    }
-
     public void createMealPlan() {
 
         List<String> options1 = new ArrayList<>();
@@ -141,7 +134,6 @@ public class MealPlanHandler {
         }
     }
 
-
     public void chooseRecipeFromDB(String day, String date) {
         Set<Recipe> recipesFromDB = dbRecipe.readRecipes();
         for (Recipe r : recipesFromDB) {
@@ -159,15 +151,9 @@ public class MealPlanHandler {
 
     public void showMealPlan() {
         if (myMealPlan.getMyMealPlan().size() == 0 ){
-            System.out.println("DER ER IKKE NGET iagmodmga");
+            ui.displayMessage("You do not have recipes in your mealplan");
         } else if (myMealPlan.getMyMealPlan().size() >= 1) {
-            System.out.println("ses for neden");
-            System.out.println(myMealPlan.getMyMealPlan());
-        }/*
-        if (accountHandler.getOnlineAccount().getMyMealplan() != null) {
-            ui.displayMessage("Your meal plan: " + accountHandler.getOnlineAccount().getMyMealplan());
-        } else {
-            ui.displayMessage("You don't have a meal plan");
-        }*/
+            ui.displayMessage("Your mealplan:\n"+myMealPlan.getMyMealPlan());
+        }
     }
 }

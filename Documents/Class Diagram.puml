@@ -10,7 +10,8 @@ class AccountHandler
 class User
 }
 
-package "plan"{
+package "mealplan"{
+class MealPlanHandler
 class MealPlan
 class DailyMealPlan
 class Recipe
@@ -35,13 +36,25 @@ class DBIngredients
 'Label on relations
 App *-- AccountHandler
 App *-- Recipe
+
 AccountHandler *-- Account
+
 Account *-- User
 Account *-- MealPlan
+
 MealPlan "1" *-- "has 1..many" DailyMealPlan
+
+MealPlanHandler *-- AccountHandler
+MealPlanHandler *-- DBRecipe
+MealPlanHandler *-- MealPlan
+MealPlanHandler *-- UI
+
 DailyMealPlan "1" *-- "has 1..3" Recipe
+
 Recipe *-- IngredientList
+
 IngredientList *-- Ingredient
+
 DBConnector <|-- DBUser
 DBConnector <|-- DBRecipe
 DBConnector <|-- DBIngredients
@@ -90,34 +103,46 @@ User : + User(String name, int age);
 User : + String getName();
 User : + int getAge();
 
-MealPlan : - List<DailyMealPlan> myMealPlan
-MealPlan : + MealPlan(List<DailyMealPlan> myMealPlan)
-MealPlan : + String chooseData(String dateChosen)
-MealPlan : + Recipe chooseRecipe(String recipeName)
-MealPlan : + void addDailyMealPlan(String date, Recipe meal)
-MealPlan : + void deleteDailyMealPlan(String date)
+MealPlanHandler : + AccountHandler acountHandler
+MealPlanHandler : - MealPlan myMealPlan
+MealPlanHandler : - DBRecipe dbRecipe
+MealPlanHandler : - UI ui
+MealPlanHandler : + void createMealPlan()
+MealPlanHandler : + void chooseRecipeFromDB(String day, String date)
+MealPlanHandler : + void showMealPlan()
 
-DailyMealPlan : - String date
-DailyMealPlan : - Recipe dinner
-DailyMealPlan : + DailyMealPlan(LocalDate date, Recipe meal)
-DailyMealPlan : + void changeDate(String newDate)
+MealPlan : - List<DailyMealPlan> myMealPlan = new ArrayList<>()
+MealPlan : + void addDailyMealPlan(String date, String day, Recipe meal)
+MealPlan : + List<DailyMealPlan> getMyMealPlan()
 
-Recipe : - String title
-Recipe : - String description
-Recipe : - int prepTime
-Recipe : - int cookTime
+
+DailyMealPlan : - String date;
+DailyMealPlan : - String day;
+DailyMealPlan : - Recipe dinner;
+DailyMealPlan : + DailyMealPlan(String date, String day, Recipe meal);
+DailyMealPlan : + String getDate();
+DailyMealPlan : + String getDay();
+DailyMealPlan : + Recipe getDinner();
+DailyMealPlan : + String toString();
+
+Recipe : - int id;
+Recipe : - String title;
+Recipe : - String description;
+Recipe : - int prepTime;
+Recipe : - int cookTime;
 Recipe : - String ingredients;
-Recipe : - String steps;
-Recipe : + Recipe(String title, String description, int cookTime, String ingredients, String steps)
-Recipe : + Recipe(String title, String description, int prepTime, int cookTime)
-Recipe : + Recipe(String title)
-Recipe : + void addIngredients()
-Recipe : + void addSteps()
+Recipe : - List<String> listOfIngredients;
+Recipe : - List<String> listOfSteps;
+Recipe : + Recipe(int id, String title, String description, int cookTime, List<String> ingredients, List<String> steps);
+Recipe : + Recipe(String title);
+Recipe : + int getId();
 Recipe : + String getTitle();
 Recipe : + String getDescription();
 Recipe : + int getPrepTime();
 Recipe : + int getCookTime();
-Recipe : + IngredientList getIngredients();
+Recipe : + String toString();
+Recipe : + boolean equals(Object o);
+Recipe : + hashCode();
 Recipe : + List<String> getMethod();
 
 
@@ -163,8 +188,4 @@ Recommendation : + Set<Recipe> getRandomRecipe(String dontLike);
 FoodHandler : - List<Ingredient> ownRecipe;
 FoodHandler : + addIngredientsToList();
 FoodHandler : + removeIngredientFromList();
-'User *-- Grocerylist
-'Recipe *-- Diet
-'Recipe *-- DBConnector
-'Ingredient *-- DBConnector
 @enduml

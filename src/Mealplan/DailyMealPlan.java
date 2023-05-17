@@ -11,10 +11,6 @@ public class DailyMealPlan {
         dinner = meal;
     }
 
-    public void changeDate(String newDate) {
-
-    }
-
     public String getDate() {
         return date;
     }
@@ -31,5 +27,4 @@ public class DailyMealPlan {
     public String toString() {
         return getDate() + " (" + getDay() + ")" + "\n" + getDinner();
     }
-
 }
