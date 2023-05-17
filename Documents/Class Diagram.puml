@@ -2,7 +2,8 @@
 'https://plantuml.com/class-diagram
 !pragma layout smetana
 
-class App
+class Application
+
 
 package "user"{
 class Account
@@ -26,8 +27,8 @@ class FoodHandler
 }
 
 package "util"{
-class UI
 interface DBConnector
+class UI
 class DBUser
 class DBRecipe
 class DBIngredients
@@ -36,6 +37,10 @@ class DBIngredients
 'Label on relations
 App *-- AccountHandler
 App *-- Recipe
+
+Application *-- UI
+Application *-- MealPlanHandler
+Application *-- DBRecipe
 
 AccountHandler *-- Account
 
@@ -60,16 +65,19 @@ DBConnector <|-- DBRecipe
 DBConnector <|-- DBIngredients
 
 'Methods and attributes
-Application : - List>String> options = new ArrayList<>();
-Application : - String welcomeMessage = "Welcome!";
-Application : - UI ui = new UI();
-Application : - AccountHandler ah = new AccountHandler();
-Application : + Application();
-Application : + void startMenu();
-Application : + void menu();
-Application : + void showMealPlan();
-Application : + void createMealPLan();
 
+'Attributes
+Application : - UI ui = new UI();
+Application : - MealPlanHandler mealPlanHandler = new MealPlanHandler();
+Application : - DBRecipe dbRecipe = new DBRecipe();
+Application : - Scanner scanner = new Scanner(System.in);
+
+'Constructor
+Application : + Application()
+
+'Methods
+Application : + void startMenu()
+Application : + void menu()
 
 Account : - String email;
 Account : - String password;
@@ -156,27 +164,38 @@ Ingredient : - HashMap<String, float> nutritionContent;
 
 GroceryList : HashSet<Ingredient> myGroceryList
 
+'Attributes
 UI : - Scanner scanner = new Scanner(System.in);
+
+'Methods
 UI : + void displayMessage(String msg);
 UI : + String getInput(String msg);
 UI : + int displayMenu(List<String> menuItems);
+
 
 DBConnector : - static final String DB_URL = "jdbc:mysql://34.141.56.218/mealplanner";
 DBConnector : - static final String USER = "root";
 DBConnector : - static final String PASS = "LAHY-Dat23!";
 
-DBUser : Connection conn = null;
-DBUser : PreparedStatement stmt = null;
-DBUser : + void saveUser(String email, String password);
-DBUser : + Set<Account> readUserData();
+'Methods
+DBUser : + void saveUser(String email, String password)
+DBUser : + Set<Account> readUserData()
 
-DBRecipe : Connection conn = null;
-DBRecipe : PreparedStatement stmt = null;
-DBRecipe : + void saveRecipe(Recipe recipe);
-DBRecipe : + Set<Recipe> readRecipes();
+'Attributes
+DBRecipe : - Connection conn = null;
+DBRecipe : - PreparedStatement stmt = null;
 
-DBIngredients : + Set<Ingredient> readRecipe();
-DBIngredients : + void saveData(Ingredients ingredient);
+'Methods
+DBRecipe : + void saveRecipe(Recipe recipe)
+DBRecipe : + Set<Recipe> readRecipes()
+
+'Attributes
+DBIngredients : - Connection conn = null;
+DBIngredients : - PreparedStatement stmt = null;
+
+'Methods
+DBIngredients : + Set<Ingredient> readIngredients()
+
 
 Diet : + Set<Recipe> filterByDietType(String dietType);
 Diet : + Set<Recipe> filterByAllergies(String allergiesOf);
