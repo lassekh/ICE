@@ -8,17 +8,21 @@ public class MealPlan {
     private List<DailyMealPlan> myMealPlan = new ArrayList<>();
 
 
-    String chooseData(String dataChosen){
+    String chooseData(String dataChosen) {
         return dataChosen;
     }
 
-    Recipe chooseRecipe(String recipeName){
+    Recipe chooseRecipe(String recipeName) {
         return null;
     }
 
-    public void addDailyMealPlan(String date, String day, Recipe meal){
+    public void addDailyMealPlan(String date, String day, Recipe meal) {
         DailyMealPlan dailyMealPlan = new DailyMealPlan(date, day, meal);
         myMealPlan.add(dailyMealPlan);
-
     }
+
+    public List<DailyMealPlan> getMyMealPlan() {
+        return myMealPlan;
+    }
+
 }

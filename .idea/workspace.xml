@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c434148-7d4f-4408-8276-e2f1d7abe8a8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Utility/DBIngredients.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/DBIngredients.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mealplan/DailyMealPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/DailyMealPlan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mealplan/MealPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/MealPlan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mealplan/MealPlanHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/MealPlanHandler.java" afterDir="false" />
     </list>
     <list id="1d5b45b3-2fc8-4770-bef6-34d675fe478e" name="Changes by runem" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -117,7 +121,7 @@
       <workItem from="1684130917448" duration="13082000" />
       <workItem from="1684175328691" duration="3269000" />
       <workItem from="1684216369004" duration="10498000" />
-      <workItem from="1684303993301" duration="650000" />
+      <workItem from="1684303993301" duration="4800000" />
     </task>
     <servers />
   </component>
