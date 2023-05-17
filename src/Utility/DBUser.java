@@ -3,9 +3,7 @@ package Utility;
 import User.Account;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class DBUser implements DBConnector {
@@ -37,26 +35,22 @@ public class DBUser implements DBConnector {
             stmt.execute();
 
             //STEP 5: Clean-up environment
-
             stmt.close();
             conn.close();
         } catch (SQLException se) {
             //Handle errors for JDBC
             se.printStackTrace();
-        } catch (
-                Exception e) {
+        } catch (Exception e) {
             //Handle errors for Class.forName
             e.printStackTrace();
         } finally {
             //finally block used to close resources
             try {
-                if (stmt != null)
-                    stmt.close();
+                if (stmt != null) stmt.close();
             } catch (SQLException se2) {
             }// nothing we can do
             try {
-                if (conn != null)
-                    conn.close();
+                if (conn != null) conn.close();
             } catch (SQLException se) {
                 se.printStackTrace();
             }//end finally try
@@ -102,20 +96,17 @@ public class DBUser implements DBConnector {
         } catch (SQLException se) {
             //Handle errors for JDBC
             se.printStackTrace();
-        } catch (
-                Exception e) {
+        } catch (Exception e) {
             //Handle errors for Class.forName
             e.printStackTrace();
         } finally {
             //finally block used to close resources
             try {
-                if (stmt != null)
-                    stmt.close();
+                if (stmt != null) stmt.close();
             } catch (SQLException se2) {
             }// nothing we can do
             try {
-                if (conn != null)
-                    conn.close();
+                if (conn != null) conn.close();
             } catch (SQLException se) {
                 se.printStackTrace();
             }//end finally try
