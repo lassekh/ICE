@@ -1,17 +1,19 @@
 package User;
 
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import Mealplan.MealPlan;
-
+import Mealplan.Recipe;
 
 
 public class Account {
     private String email;
     private String password;
     private List<User> users;
-    private MealPlan myMealplan; //Lasse
+    private MealPlan myMealplan;
 
     public Account(String email, String password){
         this.email = email;
@@ -37,6 +39,7 @@ public class Account {
     }
     //Lasse
     public MealPlan getMyMealplan() {
+
         return myMealplan;
     }
 

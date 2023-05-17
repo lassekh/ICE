@@ -4,10 +4,12 @@ import java.time.LocalDate;
 
 public class DailyMealPlan {
     private String date;
+    private String day;
     private Recipe dinner;
 
-    public DailyMealPlan(LocalDate date, Recipe meal) {
-        this.date = String.valueOf(date);
+    public DailyMealPlan(String date, String day, Recipe meal) {
+        this.date = date;
+        this.day = day;
         dinner = meal;
     }
 
