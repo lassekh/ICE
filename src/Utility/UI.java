@@ -23,7 +23,8 @@ public class UI {
         int counter = 1;
         int option = 0;
 
-        displayMessage("See the menu below, for options");
+
+        displayMessage("Choose one of the options below");
         for (String s : menuItems) {
             displayMessage(counter + ") " + s);
             counter++;
