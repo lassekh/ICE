@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Application {
-    UI ui = new UI();
+    private UI ui = new UI();
     private MealPlanHandler mealPlanHandler = new MealPlanHandler();
     private DBRecipe dbRecipe = new DBRecipe();
     private Scanner scanner = new Scanner(System.in);
