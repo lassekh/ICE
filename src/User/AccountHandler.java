@@ -13,16 +13,15 @@ public class AccountHandler {
     }
     public void mainMenu() {
         List<String> mainMenu = new ArrayList<>();
-        mainMenu.add("Create a user");
-        mainMenu.add("Login");
-        int input = ui.displayMenu(mainMenu);
+        mainMenu.add("1) Create a user");
+        mainMenu.add("2) Login");
+        int menuChoice = ui.displayMenu(mainMenu);
         boolean inputValidator = true;
         while (inputValidator) {
-
-            if (input == 1) {
+            if (menuChoice == 1) {
                 createAccount();
                 inputValidator = false;
-            } else if (input == 2) {
+            } else if (menuChoice == 2) {
                 loginForm();
                 inputValidator = false;
             }
@@ -33,18 +32,18 @@ public class AccountHandler {
         email = ui.getInput("Enter your email: ");
         password = ui.getInput("Enter your password: ");
         if(loginValidator(email, password)){
-            ui.displayMessage("Account with email " + email + " is now logged in.");
+            ui.displayMessage("Account with email: " + email + " is now logged in.");
         }else{
             List<String> options = new ArrayList<>();
-            options.add("Try again");
-            options.add("Create account");
-            options.add("Type Q to quit the program");
+            options.add("1) Try again");
+            options.add("2) Create account");
+            options.add("3) Type Q to quit the program");
 
             ui.displayMessage("The email and/or password you entered is wrong.");
 
-            int option = ui.displayMenu(options);
+            int optionChoice = ui.displayMenu(options);
 
-            switch (option) {
+            switch (optionChoice) {
                 case 1:
                     loginForm();
                     break;
@@ -60,10 +59,10 @@ public class AccountHandler {
 
 
     public boolean loginValidator(String email, String password) {
-        accounts = dbUser.readUserData(); //Lasse
+        accounts = dbUser.readUserData();
         for (Account account : accounts) {
             if (account.getEmail().equalsIgnoreCase(email) && account.getPassword().equals(password)) {
-                onlineAccount = new Account(email,password); //Lasse
+                onlineAccount = new Account(email,password);
                 return true;
             }
         }
@@ -74,31 +73,17 @@ public class AccountHandler {
         boolean isValidEmail = false;
         while (!isValidEmail) {
             String inputEmail = ui.getInput("Enter your email address. It must end with .dk or .com: ");
-
-            Set<Account> setOfAccounts = dbUser.readUserData();
-            boolean emailExists = false;
-            for (Account account : setOfAccounts) {
-                if (account.getEmail().equalsIgnoreCase(inputEmail)) {
-                    emailExists = true;
-                    break;
-                }
-            }
-
-            if (emailExists) {
-                ui.displayMessage("This email is already used. Try another email");
+            if(emailValidator(inputEmail)){
+                email = inputEmail;
+                isValidEmail = true;
             } else {
-                if (inputEmail.contains("@") && (inputEmail.endsWith(".com") || inputEmail.endsWith(".dk"))) {
-                    email = inputEmail;
-                    isValidEmail = true;
-                } else {
-                    System.out.println("Your input is invalid. Please try again.");
-                }
+                System.out.println("Your input is invalid. Please try again.");
             }
         }
         boolean isValidPassword = false;
         while (!isValidPassword) {
             String inputPassword = ui.getInput("Enter a password. It must contain at least 5 characters: ");
-            if (inputPassword.length() >= 5) {
+            if (passwordValidator(inputPassword)) {
                 password = inputPassword;
                 isValidPassword = true;
             } else {
@@ -107,12 +92,35 @@ public class AccountHandler {
         }
         dbUser.saveUser(email, password);
         ui.displayMessage("Congratulation! Your account has been registered successfully.");
-        loginValidator(email, password); //Lasse
+        loginValidator(email, password);
     }
-    //Lasse
+    public boolean checkIfEmailExists(String email){
+        accounts = dbUser.readUserData();
+        for (Account account : accounts) {
+            if (account.getEmail().equalsIgnoreCase(email)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean emailValidator(String email){
+        if (email.contains("@") && (email.endsWith(".com") || email.endsWith(".dk"))) {
+            if(checkIfEmailExists(email)) {
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+    public boolean passwordValidator(String password){
+        if (password.length() >= 5){
+            return true;
+        }else{
+            return false;
+        }
+    }
     public Account getOnlineAccount() {
-        return
-                onlineAccount;
+        return onlineAccount;
     }
     //Lasse
     public void setOnlineAccount(Account onlineAccount) {
