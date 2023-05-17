@@ -2,8 +2,8 @@
 'https://plantuml.com/class-diagram
 !pragma layout smetana
 
+class Main
 class Application
-
 
 package "user"{
 class Account
@@ -35,9 +35,10 @@ class DBIngredients
 }
 
 'Label on relations
-App *-- AccountHandler
-App *-- Recipe
 
+Main *-- Application
+
+Application *-- AccountHandler
 Application *-- UI
 Application *-- MealPlanHandler
 Application *-- DBRecipe
@@ -65,6 +66,9 @@ DBConnector <|-- DBRecipe
 DBConnector <|-- DBIngredients
 
 'Methods and attributes
+
+Main : + static void main(String[] args);
+
 
 'Attributes
 Application : - UI ui = new UI();
@@ -119,7 +123,7 @@ MealPlanHandler : + void createMealPlan();
 MealPlanHandler : - Recipe createRecipe();
 MealPlanHandler : - LocalDate getStartDate();
 MealPlanHandler : - void saveRecipeAndAddToMealPlan(Recipe recipe, LocalDate selectedDate);
-MealPlanHandler : - boolean shouldCreateForNextDay()
+MealPlanHandler : - boolean shouldCreateForNextDay();
 MealPlanHandler : - LocalDate getNextDay(LocalDate currentDate, int counter)
 MealPlanHandler : + void chooseRecipeFromDB(String day, String date);
 MealPlanHandler : + void showMealPlan();
@@ -127,7 +131,6 @@ MealPlanHandler : + void showMealPlan();
 MealPlan : - List<DailyMealPlan> myMealPlan = new ArrayList<>()
 MealPlan : + void addDailyMealPlan(String date, String day, Recipe meal)
 MealPlan : + List<DailyMealPlan> getMyMealPlan()
-
 
 DailyMealPlan : - String date;
 DailyMealPlan : - String day;
