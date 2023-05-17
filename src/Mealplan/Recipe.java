@@ -33,13 +33,6 @@ public class Recipe {
     public Recipe(String title){
         this.title = title;
     }
-    public void addIngredients(){
-
-    }
-
-    public void addSteps(){
-
-    }
 
     public int getId() {
         return id;
@@ -60,24 +53,10 @@ public class Recipe {
     public int getCookTime() {
         return cookTime;
     }
-    public String getListOfIngredients(){
-        String ingredient= "";
-        for (String i : listOfIngredients){
-            ingredient += i+", ";
-        }
-        return ingredient;
-    }
-    public String getListOfSteps(){
-        String steps= "";
-        for (String s : listOfSteps){
-            steps += s+"\n";
-        }
-        return steps;
-    }
 
     @Override
     public String toString(){
-        return "\nTitle:\n"+ getTitle()/*+"\n\nIngredients:\n"+ getListOfIngredients()+"\n"+"\nSteps:\n"+getListOfSteps()*/+"\n\n--------------------";
+        return "\nTitle:\n"+ getTitle()+"\n\n--------------------";
     }
 
     @Override

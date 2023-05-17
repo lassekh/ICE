@@ -2,7 +2,8 @@
 'https://plantuml.com/class-diagram
 !pragma layout smetana
 
-class App
+class Application
+
 
 package "user"{
 class Account
@@ -10,7 +11,8 @@ class AccountHandler
 class User
 }
 
-package "plan"{
+package "mealplan"{
+class MealPlanHandler
 class MealPlan
 class DailyMealPlan
 class Recipe
@@ -25,8 +27,8 @@ class FoodHandler
 }
 
 package "util"{
-class UI
 interface DBConnector
+class UI
 class DBUser
 class DBRecipe
 class DBIngredients
@@ -35,28 +37,47 @@ class DBIngredients
 'Label on relations
 App *-- AccountHandler
 App *-- Recipe
+
+Application *-- UI
+Application *-- MealPlanHandler
+Application *-- DBRecipe
+
 AccountHandler *-- Account
+
 Account *-- User
 Account *-- MealPlan
+
 MealPlan "1" *-- "has 1..many" DailyMealPlan
+
+MealPlanHandler *-- AccountHandler
+MealPlanHandler *-- DBRecipe
+MealPlanHandler *-- MealPlan
+MealPlanHandler *-- UI
+
 DailyMealPlan "1" *-- "has 1..3" Recipe
+
 Recipe *-- IngredientList
+
 IngredientList *-- Ingredient
+
 DBConnector <|-- DBUser
 DBConnector <|-- DBRecipe
 DBConnector <|-- DBIngredients
 
 'Methods and attributes
-Application : - List>String> options = new ArrayList<>();
-Application : - String welcomeMessage = "Welcome!";
-Application : - UI ui = new UI();
-Application : - AccountHandler ah = new AccountHandler();
-Application : + Application();
-Application : + void startMenu();
-Application : + void menu();
-Application : + void showMealPlan();
-Application : + void createMealPLan();
 
+'Attributes
+Application : - UI ui = new UI();
+Application : - MealPlanHandler mealPlanHandler = new MealPlanHandler();
+Application : - DBRecipe dbRecipe = new DBRecipe();
+Application : - Scanner scanner = new Scanner(System.in);
+
+'Constructor
+Application : + Application()
+
+'Methods
+Application : + void startMenu()
+Application : + void menu()
 
 Account : - String email;
 Account : - String password;
@@ -90,34 +111,51 @@ User : + User(String name, int age);
 User : + String getName();
 User : + int getAge();
 
-MealPlan : - List<DailyMealPlan> myMealPlan
-MealPlan : + MealPlan(List<DailyMealPlan> myMealPlan)
-MealPlan : + String chooseData(String dateChosen)
-MealPlan : + Recipe chooseRecipe(String recipeName)
-MealPlan : + void addDailyMealPlan(String date, Recipe meal)
-MealPlan : + void deleteDailyMealPlan(String date)
+MealPlanHandler : + AccountHandler acountHandler;
+MealPlanHandler : - MealPlan myMealPlan;
+MealPlanHandler : - DBRecipe dbRecipe;
+MealPlanHandler : - UI ui;
+MealPlanHandler : + void createMealPlan();
+MealPlanHandler : - Recipe createRecipe();
+MealPlanHandler : - LocalDate getStartDate();
+MealPlanHandler : - void saveRecipeAndAddToMealPlan(Recipe recipe, LocalDate selectedDate);
+MealPlanHandler : - boolean shouldCreateForNextDay()
+MealPlanHandler : - LocalDate getNextDay(LocalDate currentDate, int counter)
+MealPlanHandler : + void chooseRecipeFromDB(String day, String date);
+MealPlanHandler : + void showMealPlan();
 
-DailyMealPlan : - String date
-DailyMealPlan : - Recipe dinner
-DailyMealPlan : + DailyMealPlan(LocalDate date, Recipe meal)
-DailyMealPlan : + void changeDate(String newDate)
+MealPlan : - List<DailyMealPlan> myMealPlan = new ArrayList<>()
+MealPlan : + void addDailyMealPlan(String date, String day, Recipe meal)
+MealPlan : + List<DailyMealPlan> getMyMealPlan()
 
-Recipe : - String title
-Recipe : - String description
-Recipe : - int prepTime
-Recipe : - int cookTime
+
+DailyMealPlan : - String date;
+DailyMealPlan : - String day;
+DailyMealPlan : - Recipe dinner;
+DailyMealPlan : + DailyMealPlan(String date, String day, Recipe meal);
+DailyMealPlan : + String getDate();
+DailyMealPlan : + String getDay();
+DailyMealPlan : + Recipe getDinner();
+DailyMealPlan : + String toString();
+
+Recipe : - int id;
+Recipe : - String title;
+Recipe : - String description;
+Recipe : - int prepTime;
+Recipe : - int cookTime;
 Recipe : - String ingredients;
-Recipe : - String steps;
-Recipe : + Recipe(String title, String description, int cookTime, String ingredients, String steps)
-Recipe : + Recipe(String title, String description, int prepTime, int cookTime)
-Recipe : + Recipe(String title)
-Recipe : + void addIngredients()
-Recipe : + void addSteps()
+Recipe : - List<String> listOfIngredients;
+Recipe : - List<String> listOfSteps;
+Recipe : + Recipe(int id, String title, String description, int cookTime, List<String> ingredients, List<String> steps);
+Recipe : + Recipe(String title);
+Recipe : + int getId();
 Recipe : + String getTitle();
 Recipe : + String getDescription();
 Recipe : + int getPrepTime();
 Recipe : + int getCookTime();
-Recipe : + IngredientList getIngredients();
+Recipe : + String toString();
+Recipe : + boolean equals(Object o);
+Recipe : + hashCode();
 Recipe : + List<String> getMethod();
 
 
@@ -131,27 +169,38 @@ Ingredient : - HashMap<String, float> nutritionContent;
 
 GroceryList : HashSet<Ingredient> myGroceryList
 
+'Attributes
 UI : - Scanner scanner = new Scanner(System.in);
+
+'Methods
 UI : + void displayMessage(String msg);
 UI : + String getInput(String msg);
 UI : + int displayMenu(List<String> menuItems);
+
 
 DBConnector : - static final String DB_URL = "jdbc:mysql://34.141.56.218/mealplanner";
 DBConnector : - static final String USER = "root";
 DBConnector : - static final String PASS = "LAHY-Dat23!";
 
-DBUser : Connection conn = null;
-DBUser : PreparedStatement stmt = null;
-DBUser : + void saveUser(String email, String password);
-DBUser : + Set<Account> readUserData();
+'Methods
+DBUser : + void saveUser(String email, String password)
+DBUser : + Set<Account> readUserData()
 
-DBRecipe : Connection conn = null;
-DBRecipe : PreparedStatement stmt = null;
-DBRecipe : + void saveRecipe(Recipe recipe);
-DBRecipe : + Set<Recipe> readRecipes();
+'Attributes
+DBRecipe : - Connection conn = null;
+DBRecipe : - PreparedStatement stmt = null;
 
-DBIngredients : + Set<Ingredient> readRecipe();
-DBIngredients : + void saveData(Ingredients ingredient);
+'Methods
+DBRecipe : + void saveRecipe(Recipe recipe)
+DBRecipe : + Set<Recipe> readRecipes()
+
+'Attributes
+DBIngredients : - Connection conn = null;
+DBIngredients : - PreparedStatement stmt = null;
+
+'Methods
+DBIngredients : + Set<Ingredient> readIngredients()
+
 
 Diet : + Set<Recipe> filterByDietType(String dietType);
 Diet : + Set<Recipe> filterByAllergies(String allergiesOf);
@@ -163,8 +212,4 @@ Recommendation : + Set<Recipe> getRandomRecipe(String dontLike);
 FoodHandler : - List<Ingredient> ownRecipe;
 FoodHandler : + addIngredientsToList();
 FoodHandler : + removeIngredientFromList();
-'User *-- Grocerylist
-'Recipe *-- Diet
-'Recipe *-- DBConnector
-'Ingredient *-- DBConnector
 @enduml

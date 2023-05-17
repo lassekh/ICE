@@ -1,7 +1,5 @@
 package Utility;
 
-import User.AccountHandler;
-
 import java.util.List;
 import java.util.Scanner;
 
