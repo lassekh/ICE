@@ -1,14 +1,5 @@
 package User;
-
-
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import Mealplan.MealPlan;
-import Mealplan.Recipe;
-
-
 public class Account {
     private String email;
     private String password;
@@ -31,12 +22,11 @@ public class Account {
         User user = new User(name, age);
         return user;
     }
-    //Lasse
     public MealPlan getMyMealplan() {
         return myMealplan;
     }
     @Override
     public String toString(){
-        return "email is " + getEmail() + ", Password is: " + getPassword();
+        return "Account email is " + getEmail() + ", Account password is: " + getPassword();
     }
 }

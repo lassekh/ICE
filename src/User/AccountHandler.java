@@ -1,32 +1,21 @@
 package User;
-
 import Utility.DBUser;
 import Utility.UI;
-
 import java.util.*;
-
 public class AccountHandler {
-
     private Set<Account> accounts = new HashSet<>();
-    //Mail instance variabel
     private String email;
-    //Password instance variabel
     private String password;
     private Account onlineAccount;
     private UI ui = new UI();
     private DBUser dbUser = new DBUser();
-
     public AccountHandler() {
-
     }
-
     public void mainMenu() {
         List<String> mainMenu = new ArrayList<>();
         mainMenu.add("Create a user");
         mainMenu.add("Login");
         int input = ui.displayMenu(mainMenu);
-        //int input = Integer.parseInt(ui.getInput("Type number:"));
-
         boolean inputValidator = true;
         while (inputValidator) {
 
