@@ -12,7 +12,7 @@ public class AccountHandler {
     private String email;
     //Password instance variabel
     private String password;
-    private Account onlineAccount; //Lasse
+    private Account onlineAccount;
     private UI ui = new UI();
     private DBUser dbUser = new DBUser();
 
@@ -122,7 +122,8 @@ public class AccountHandler {
     }
     //Lasse
     public Account getOnlineAccount() {
-        return onlineAccount;
+        return
+                onlineAccount;
     }
     //Lasse
     public void setOnlineAccount(Account onlineAccount) {

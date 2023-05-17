@@ -1,5 +1,6 @@
 package Mealplan;
 
+import User.AccountHandler;
 import Utility.DBRecipe;
 import Utility.UI;
 
@@ -14,6 +15,7 @@ public class MealPlanHandler {
     private UI ui = new UI();
     private DBRecipe dbRecipe = new DBRecipe();
     private MealPlan myMealPlan = new MealPlan();
+    private AccountHandler accountHandler = new AccountHandler();
 
     public void mealPlanOptions() {
         List<String> options = new ArrayList<>();
@@ -77,8 +79,6 @@ public class MealPlanHandler {
 
                 DBRecipe dbRecipe = new DBRecipe();
                 dbRecipe.saveRecipe(recipe);
-
-                // TO-DO: Mangler at gemme informationen i databasen!
 
 
                 List<String> options = new ArrayList<>();
@@ -154,6 +154,20 @@ public class MealPlanHandler {
                 myMealPlan.addDailyMealPlan(date, day, r);
                 ui.displayMessage(r.getTitle() + " added to your meal plan.");
             }
+        }
+    }
+
+    public void showMealPlan() {
+        if (accountHandler.getOnlineAccount().getMyMealplan() != null) {
+            ui.displayMessage("Your meal plan: " + accountHandler.getOnlineAccount().getMyMealplan());
+        } else {
+            String input = ui.getInput("You don't have a meal plan. Do you want to create one? Y/N");
+            //if (input.equalsIgnoreCase("y")) {
+            //    createMealPlan();
+                //menu();
+            //} else {
+                //menu();
+           // }
         }
     }
 }

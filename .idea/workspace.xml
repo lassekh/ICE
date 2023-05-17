@@ -6,13 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="5c434148-7d4f-4408-8276-e2f1d7abe8a8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Account.java" afterDir="false" />
-    </list>
-    <list id="1d5b45b3-2fc8-4770-bef6-34d675fe478e" name="Changes by runem" comment="">
+      <change beforePath="$PROJECT_DIR$/out/production/ICE/Mealplan/MealPlanHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/Mealplan/MealPlanHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ICE/Mealplan/Recipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/Mealplan/Recipe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ICE/User/AccountHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/User/AccountHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mealplan/MealPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/MealPlan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mealplan/MealPlanHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/MealPlanHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mealplan/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/Recipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/User/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/AccountHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/AccountHandler.java" afterDir="false" />
     </list>
+    <list id="1d5b45b3-2fc8-4770-bef6-34d675fe478e" name="Changes by runem" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,16 +32,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/User/Account.java">
-      <ranges>
-        <range start1="3" end1="3" start2="3" end2="5" changelist="1d5b45b3-2fc8-4770-bef6-34d675fe478e" />
-        <range start1="6" end1="7" start2="8" end2="9" changelist="1d5b45b3-2fc8-4770-bef6-34d675fe478e" />
-        <range start1="13" end1="14" start2="15" end2="16" changelist="5c434148-7d4f-4408-8276-e2f1d7abe8a8" />
-        <range start1="39" end1="39" start2="41" end2="42" changelist="5c434148-7d4f-4408-8276-e2f1d7abe8a8" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -74,7 +68,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Application.ApplicationMain" />
       <module name="ICE" />
@@ -113,7 +107,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bda8e929-68b7-4043-88c6-b08716eb43f7" name="Changes" comment="" />
+      <changelist id="5c434148-7d4f-4408-8276-e2f1d7abe8a8" name="Changes" comment="" />
       <created>1683619341019</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -132,11 +126,29 @@
       <workItem from="1684130917448" duration="13082000" />
       <workItem from="1684175328691" duration="3269000" />
       <workItem from="1684216369004" duration="10498000" />
+      <workItem from="1684300057596" duration="3769000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -149,6 +161,11 @@
           <url>file://$PROJECT_DIR$/src/Utility/DBUser.java</url>
           <line>93</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/User/AccountHandler.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
