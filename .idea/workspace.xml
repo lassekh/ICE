@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c434148-7d4f-4408-8276-e2f1d7abe8a8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/Class Diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/Class Diagram.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICE/Mealplan/MealPlanHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/Mealplan/MealPlanHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICE/Mealplan/Recipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/Mealplan/Recipe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICE/Utility/DBRecipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/Utility/DBRecipe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICE/Utility/DBUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/Utility/DBUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICE/Utility/UI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/Utility/UI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mealplan/MealPlanHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mealplan/MealPlanHandler.java" afterDir="false" />
-    </list>
+    <list default="true" id="5c434148-7d4f-4408-8276-e2f1d7abe8a8" name="Changes" comment="" />
     <list id="1d5b45b3-2fc8-4770-bef6-34d675fe478e" name="Changes by runem" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +117,7 @@
       <workItem from="1684216369004" duration="10498000" />
       <workItem from="1684303993301" duration="345000" />
       <workItem from="1684304527562" duration="43000" />
+      <workItem from="1684314919998" duration="156000" />
     </task>
     <servers />
   </component>
@@ -146,7 +138,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/User/Account.java</url>
-          <line>35</line>
+          <line>25</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
