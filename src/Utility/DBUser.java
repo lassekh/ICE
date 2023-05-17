@@ -8,7 +8,6 @@ import java.util.Set;
 
 public class DBUser implements DBConnector {
 
-
     public void saveUser(String email, String password) {
 
         Connection conn = null;

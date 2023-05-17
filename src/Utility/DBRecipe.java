@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Set;
 
 public class DBRecipe implements DBConnector {
-    Connection conn = null;
-    PreparedStatement stmt = null;
+    private Connection conn = null;
+    private PreparedStatement stmt = null;
 
     public void saveRecipe(Recipe recipe) {
         try {

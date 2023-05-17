@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class DBIngredients implements DBConnector {
-    Connection conn = null;
-    PreparedStatement stmt = null;
+    private Connection conn = null;
+    private PreparedStatement stmt = null;
 
     public Set<Ingredient> readIngredients() {
         try {

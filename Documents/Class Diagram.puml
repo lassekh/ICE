@@ -26,16 +26,18 @@ class FoodHandler
 }
 
 package "util"{
-class UI
 interface DBConnector
+class UI
 class DBUser
 class DBRecipe
 class DBIngredients
 }
 
 'Label on relations
-Application *-- AccountHandler
-Application *-- Recipe
+Application *-- UI
+Application *-- MealPlanHandler
+Application *-- DBRecipe
+
 AccountHandler *-- Account
 Account *-- User
 Account *-- MealPlan
@@ -135,27 +137,38 @@ Ingredient : - HashMap<String, float> nutritionContent;
 
 GroceryList : HashSet<Ingredient> myGroceryList
 
+'Attributes
 UI : - Scanner scanner = new Scanner(System.in);
+
+'Methods
 UI : + void displayMessage(String msg);
 UI : + String getInput(String msg);
 UI : + int displayMenu(List<String> menuItems);
+
 
 DBConnector : - static final String DB_URL = "jdbc:mysql://34.141.56.218/mealplanner";
 DBConnector : - static final String USER = "root";
 DBConnector : - static final String PASS = "LAHY-Dat23!";
 
-DBUser : Connection conn = null;
-DBUser : PreparedStatement stmt = null;
-DBUser : + void saveUser(String email, String password);
-DBUser : + Set<Account> readUserData();
+'Methods
+DBUser : + void saveUser(String email, String password)
+DBUser : + Set<Account> readUserData()
 
-DBRecipe : Connection conn = null;
-DBRecipe : PreparedStatement stmt = null;
-DBRecipe : + void saveRecipe(Recipe recipe);
-DBRecipe : + Set<Recipe> readRecipes();
+'Attributes
+DBRecipe : - Connection conn = null;
+DBRecipe : - PreparedStatement stmt = null;
 
-DBIngredients : + Set<Ingredient> readRecipe();
-DBIngredients : + void saveData(Ingredients ingredient);
+'Methods
+DBRecipe : + void saveRecipe(Recipe recipe)
+DBRecipe : + Set<Recipe> readRecipes()
+
+'Attributes
+DBIngredients : - Connection conn = null;
+DBIngredients : - PreparedStatement stmt = null;
+
+'Methods
+DBIngredients : + Set<Ingredient> readIngredients()
+
 
 Diet : + Set<Recipe> filterByDietType(String dietType);
 Diet : + Set<Recipe> filterByAllergies(String allergiesOf);
