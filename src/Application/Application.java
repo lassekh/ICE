@@ -13,7 +13,7 @@ public class Application {
     List<String> options = new ArrayList<>();
     private String welcomeMessage = "Welcome!";
     UI ui = new UI();
-    private AccountHandler accountHandler = new AccountHandler(); //Lasse
+    //private AccountHandler accountHandler = new AccountHandler(); //Lasse
     private MealPlanHandler mealPlanHandler = new MealPlanHandler();
     private DBRecipe dbRecipe = new DBRecipe();
     private Scanner scanner = new Scanner(System.in);
@@ -25,7 +25,7 @@ public class Application {
 
     //Lasse
     public void startMenu() {
-        accountHandler.mainMenu();
+        mealPlanHandler.accountHandler.mainMenu();
     }
 
     public void menu() {
@@ -36,15 +36,25 @@ public class Application {
         boolean isTrue = true;
         while(isTrue){
 
-            /* List<String> options = new ArrayList<>();
-            options.add("1) Show available recipes");
-            options.add("2) Show meal plan");
-            options.add("3) create meal plan");
-            options.add("4) Close program");
+            /*List<String> options = new ArrayList<>();
+            options.add(" Show available recipes");
+            options.add(" Show meal plan");
+            options.add(" create meal plan");
+            options.add(" Show meal plan");
+            options.add(" Show meal plan");
+            options.add(" Show meal plan");
+            options.add(" Show meal plan");
+            options.add(" Show meal plan");
+            options.add(" Show meal plan");
+            options.add(" Show meal plan");
 
-            int option = ui.displayMenu(options);
 
-             */
+            options.add(" Close program");
+            options.add(" Show meal plan");
+
+            int option = ui.displayMenu(options);*/
+
+
 
             ui.displayMessage("1) Show available recipes");
             ui.displayMessage("2) Show meal plan");

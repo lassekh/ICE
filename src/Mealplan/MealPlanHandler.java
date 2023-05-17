@@ -15,7 +15,7 @@ public class MealPlanHandler {
     private UI ui = new UI();
     private DBRecipe dbRecipe = new DBRecipe();
     private MealPlan myMealPlan = new MealPlan();
-    private AccountHandler accountHandler = new AccountHandler();
+    public AccountHandler accountHandler = new AccountHandler();
 
     public void mealPlanOptions() {
         List<String> options = new ArrayList<>();
@@ -94,7 +94,7 @@ public class MealPlanHandler {
                         weekday = dayOfWeek.toString();
                         ui.displayMessage("Time to add the recipe for The following day: " + weekday + " (" + selectedDate + ")");
                         String date = selectedDate.toString();
-                        myMealPlan.addDailyMealPlan(date,weekday,recipe);
+                        myMealPlan.addDailyMealPlan(date, weekday, recipe);
 
                     } else {
                         selectedDate = selectedDate.plusDays(1);
@@ -102,7 +102,7 @@ public class MealPlanHandler {
                         weekday = dayOfWeek.toString();
                         ui.displayMessage("Time to add the recipe for The following day: " + weekday + " (" + selectedDate + ")");
                         String date = selectedDate.toString();
-                        myMealPlan.addDailyMealPlan(date,weekday,recipe);
+                        myMealPlan.addDailyMealPlan(date, weekday, recipe);
 
                     }
 
@@ -158,16 +158,16 @@ public class MealPlanHandler {
     }
 
     public void showMealPlan() {
+        if (myMealPlan.getMyMealPlan().size() == 0 ){
+            System.out.println("DER ER IKKE NGET iagmodmga");
+        } else if (myMealPlan.getMyMealPlan().size() >= 1) {
+            System.out.println("ses for neden");
+            System.out.println(myMealPlan.getMyMealPlan());
+        }/*
         if (accountHandler.getOnlineAccount().getMyMealplan() != null) {
             ui.displayMessage("Your meal plan: " + accountHandler.getOnlineAccount().getMyMealplan());
         } else {
-            String input = ui.getInput("You don't have a meal plan. Do you want to create one? Y/N");
-            //if (input.equalsIgnoreCase("y")) {
-            //    createMealPlan();
-                //menu();
-            //} else {
-                //menu();
-           // }
-        }
+            ui.displayMessage("You don't have a meal plan");
+        }*/
     }
 }

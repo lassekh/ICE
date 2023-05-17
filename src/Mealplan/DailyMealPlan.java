@@ -1,7 +1,5 @@
 package Mealplan;
 
-import java.time.LocalDate;
-
 public class DailyMealPlan {
     private String date;
     private String day;
@@ -15,6 +13,23 @@ public class DailyMealPlan {
 
     public void changeDate(String newDate) {
 
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public Recipe getDinner() {
+        return dinner;
+    }
+
+    @Override
+    public String toString() {
+        return getDate() + " (" + getDay() + ")" + "\n" + getDinner();
     }
 
 }
