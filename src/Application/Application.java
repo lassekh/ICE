@@ -1,19 +1,22 @@
 package Application;
 
 import Mealplan.MealPlanHandler;
+import Mealplan.Recipe;
 import User.AccountHandler;
+import Utility.DBRecipe;
 import Utility.UI;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Application {
 
     List<String> options = new ArrayList<>();
     private String welcomeMessage = "Welcome!";
     UI ui = new UI();
-    private AccountHandler ah = new AccountHandler(); //Lasse
+    private AccountHandler accountHandler = new AccountHandler(); //Lasse
     private MealPlanHandler mealPlanHandler = new MealPlanHandler();
+    private DBRecipe dbRecipe = new DBRecipe();
+    private Scanner scanner = new Scanner(System.in);
 
     public Application() {
         startMenu(); //Lasse
@@ -22,14 +25,18 @@ public class Application {
 
     //Lasse
     public void startMenu() {
-        ah.mainMenu();
+        accountHandler.mainMenu();
     }
 
     public void menu() {
         ui.displayMessage(welcomeMessage);
 
-        while(true){
-            List<String> options = new ArrayList<>();
+        Set<Recipe> listOfRecipe = new HashSet<>();
+
+        boolean isTrue = true;
+        while(isTrue){
+
+            /* List<String> options = new ArrayList<>();
             options.add("1) Show available recipes");
             options.add("2) Show meal plan");
             options.add("3) create meal plan");
@@ -37,9 +44,25 @@ public class Application {
 
             int option = ui.displayMenu(options);
 
+             */
+
+            ui.displayMessage("1) Show available recipes");
+            ui.displayMessage("2) Show meal plan");
+            ui.displayMessage("3) create meal plan");
+            ui.displayMessage("4) Close program");
+
+            int option = Integer.parseInt(scanner.nextLine());
+
+
             switch(option){
+                case 1:
+                    listOfRecipe = dbRecipe.readRecipes();
+                    for (Recipe recipe: listOfRecipe){
+                        System.out.println(recipe);
+                    }
+                    break;
                 case 2:
-                    showMealPlan();
+                    mealPlanHandler.showMealPlan();
                     break;
                 case 3:
                     mealPlanHandler.createMealPlan();
@@ -49,22 +72,6 @@ public class Application {
                     break;
                 default:
                     System.out.println("Wrong input");
-            }
-        }
-    }
-
-    //Lasse
-    // Har for meget ansvar. Viser MealPlan OG kan potentielt håndtere oprettelsen af en
-    public void showMealPlan() {
-        if (ah.getOnlineAccount().getMyMealplan() != null) {
-            ui.displayMessage("Your meal plan: " + ah.getOnlineAccount().getMyMealplan());
-        } else {
-            String input = ui.getInput("You don't have a meal plan. Do you want to create one? Y/N");
-            if (input.equalsIgnoreCase("y")) {
-                mealPlanHandler.createMealPlan();
-                //menu();
-            } else {
-                //menu();
             }
         }
     }

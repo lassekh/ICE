@@ -21,8 +21,4 @@ public class MealPlan {
         myMealPlan.add(dailyMealPlan);
 
     }
-
-    void deleteDailyMealPlan(String data){
-
-    }
 }

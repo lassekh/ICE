@@ -67,7 +67,6 @@ public class Recipe {
         }
         return ingredient;
     }
-
     public String getListOfSteps(){
         String steps= "";
         for (String s : listOfSteps){
@@ -78,7 +77,7 @@ public class Recipe {
 
     @Override
     public String toString(){
-        return "\nTitle:\n"+ getTitle()+"\n\nIngredients:\n"+ getListOfIngredients()+"\n"+"\nSteps:\n"+getListOfSteps()+"\n--------------------";
+        return "\nTitle:\n"+ getTitle()/*+"\n\nIngredients:\n"+ getListOfIngredients()+"\n"+"\nSteps:\n"+getListOfSteps()*/+"\n\n--------------------";
     }
 
     @Override
