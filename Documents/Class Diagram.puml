@@ -111,13 +111,18 @@ User : + User(String name, int age);
 User : + String getName();
 User : + int getAge();
 
-MealPlanHandler : + AccountHandler acountHandler
-MealPlanHandler : - MealPlan myMealPlan
-MealPlanHandler : - DBRecipe dbRecipe
-MealPlanHandler : - UI ui
-MealPlanHandler : + void createMealPlan()
-MealPlanHandler : + void chooseRecipeFromDB(String day, String date)
-MealPlanHandler : + void showMealPlan()
+MealPlanHandler : + AccountHandler acountHandler;
+MealPlanHandler : - MealPlan myMealPlan;
+MealPlanHandler : - DBRecipe dbRecipe;
+MealPlanHandler : - UI ui;
+MealPlanHandler : + void createMealPlan();
+MealPlanHandler : - Recipe createRecipe();
+MealPlanHandler : - LocalDate getStartDate();
+MealPlanHandler : - void saveRecipeAndAddToMealPlan(Recipe recipe, LocalDate selectedDate);
+MealPlanHandler : - boolean shouldCreateForNextDay()
+MealPlanHandler : - LocalDate getNextDay(LocalDate currentDate, int counter)
+MealPlanHandler : + void chooseRecipeFromDB(String day, String date);
+MealPlanHandler : + void showMealPlan();
 
 MealPlan : - List<DailyMealPlan> myMealPlan = new ArrayList<>()
 MealPlan : + void addDailyMealPlan(String date, String day, Recipe meal)
