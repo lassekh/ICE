@@ -21,6 +21,7 @@ public class Application {
     }
 
     public void startMenu() {
+        ui.displayMessage("\nWelcome to MealPlanner by LAHY\n");
         mealPlanHandler.accountHandler.mainMenu();
     }
 
