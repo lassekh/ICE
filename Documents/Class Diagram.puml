@@ -27,7 +27,7 @@ class FoodHandler
 }
 
 package "util"{
-interface DBConnector
+abstract class DBConnector
 class UI
 class DBUser
 class DBRecipe
@@ -83,10 +83,13 @@ Application : + Application()
 Application : + void startMenu()
 Application : + void menu()
 
+'Attributes
 Account : - String email;
 Account : - String password;
 Account : - List<User> users;
 Account : - MealPlan myMealPlan;
+
+'Methods
 Account : + Account(String email, String password)
 Account : + String getEmail();
 Account : + String getPassword();
@@ -95,12 +98,15 @@ Account : + void deleteUser(String name)
 Account : + getMyMealPlan():
 Account : + String toString();
 
+'Attributes
 AccountHandler : - Set<Account> accounts;
 AccountHandler : - String email;
 AccountHandler : - String password;
 AccountHandler : - Account onlineAccount;
 AccountHandler : - UI ui = new UI();
 AccountHandler : - DBUser dbUser = new DBUser();
+
+'Methods
 AccountHandler : + AccountHandler();
 AccountHandler : + void mainMenu();
 AccountHandler : + void loginForm();
@@ -109,16 +115,22 @@ AccountHandler : + void createAccount();
 AccountHandler : + Account getOnlineAccount();
 
 
+'Attributes
 User : - String name;
 User : - int age;
+
+'Methods
 User : + User(String name, int age);
 User : + String getName();
 User : + int getAge();
 
+'Attributes
 MealPlanHandler : + AccountHandler acountHandler;
 MealPlanHandler : - MealPlan myMealPlan;
 MealPlanHandler : - DBRecipe dbRecipe;
 MealPlanHandler : - UI ui;
+
+'Methods
 MealPlanHandler : + void createMealPlan();
 MealPlanHandler : - Recipe createRecipe();
 MealPlanHandler : - LocalDate getStartDate();
@@ -128,19 +140,26 @@ MealPlanHandler : - LocalDate getNextDay(LocalDate currentDate, int counter)
 MealPlanHandler : + void chooseRecipeFromDB(String day, String date);
 MealPlanHandler : + void showMealPlan();
 
+'Attributes
 MealPlan : - List<DailyMealPlan> myMealPlan = new ArrayList<>()
+
+'Methods
 MealPlan : + void addDailyMealPlan(String date, String day, Recipe meal)
 MealPlan : + List<DailyMealPlan> getMyMealPlan()
 
+'Attributes
 DailyMealPlan : - String date;
 DailyMealPlan : - String day;
 DailyMealPlan : - Recipe dinner;
+
+'Methods
 DailyMealPlan : + DailyMealPlan(String date, String day, Recipe meal);
 DailyMealPlan : + String getDate();
 DailyMealPlan : + String getDay();
 DailyMealPlan : + Recipe getDinner();
 DailyMealPlan : + String toString();
 
+'Attributes
 Recipe : - int id;
 Recipe : - String title;
 Recipe : - String description;
@@ -149,6 +168,8 @@ Recipe : - int cookTime;
 Recipe : - String ingredients;
 Recipe : - List<String> listOfIngredients;
 Recipe : - List<String> listOfSteps;
+
+'Methods
 Recipe : + Recipe(int id, String title, String description, int cookTime, List<String> ingredients, List<String> steps);
 Recipe : + Recipe(String title);
 Recipe : + int getId();
@@ -161,11 +182,14 @@ Recipe : + boolean equals(Object o);
 Recipe : + hashCode();
 Recipe : + List<String> getMethod();
 
-
+'Attributes
 IngredientList : - HashMap<Ingredient, float> ingredientAmount;
+
+'Methods
 IngredientList : + void addIngredient(Ingredient ingredient)
 IngredientList : + void addAmount(float amount)
 
+'Attributes
 Ingredient : - String name
 Ingredient : - String category
 Ingredient : - HashMap<String, float> nutritionContent;
@@ -180,10 +204,14 @@ UI : + void displayMessage(String msg);
 UI : + String getInput(String msg);
 UI : + int displayMenu(List<String> menuItems);
 
-
+'Attributes
 DBConnector : - static final String DB_URL = "jdbc:mysql://34.141.56.218/mealplanner";
 DBConnector : - static final String USER = "root";
 DBConnector : - static final String PASS = "LAHY-Dat23!";
+DBConnector : + PreparedStatement stmt = null;
+
+'Methods
+DBConnector : + Connection getConnection();
 
 'Methods
 DBUser : + void saveUser(String email, String password)
