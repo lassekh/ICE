@@ -6,20 +6,14 @@ import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
 
-public class DBIngredients implements DBConnector {
-    private Connection conn = null;
-    private PreparedStatement stmt = null;
+public class DBIngredients extends DBConnector {
 
     public Set<Ingredient> readIngredients() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Connection to account database...");
-
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
             System.out.println("Creating statement...");
 
             String query = "SELECT * FROM ingredients";
-            stmt = conn.prepareStatement(query);
+            stmt = getConnection().prepareStatement(query);
             ResultSet rs = stmt.executeQuery(query);
             Set<Ingredient> setOfIngredients = new HashSet<>();
 
@@ -29,8 +23,7 @@ public class DBIngredients implements DBConnector {
             }
             rs.close();
             stmt.close();
-            conn.close();
-
+            getConnection().close();
             return setOfIngredients;
         } catch (SQLException se) {
             se.printStackTrace();
@@ -43,8 +36,8 @@ public class DBIngredients implements DBConnector {
             } catch (SQLException se2) {
             }
             try {
-                if (conn != null)
-                    conn.close();
+                if (getConnection() != null)
+                    getConnection().close();
             } catch (SQLException se) {
                 se.printStackTrace();
             }

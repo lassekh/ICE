@@ -6,27 +6,18 @@ import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
 
-public class DBUser implements DBConnector {
+public class DBUser extends DBConnector {
 
     public void saveUser(String email, String password) {
 
-        Connection conn = null;
-        PreparedStatement stmt = null;
 
         try {
-            //STEP 1: Register JDBC driver
-            Class.forName("com.mysql.jdbc.Driver");
-
-            //STEP 2: Open a connection
-            System.out.println("Connecting to account database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-
             //STEP 3: Execute a query
             System.out.println("Creating statement...");
 
             //stmt = conn.createStatement();
             String query = "INSERT INTO accounts VALUES (null,?,?)";
-            stmt = conn.prepareStatement(query);
+            stmt = getConnection().prepareStatement(query);
             stmt.setString(1, email);
             stmt.setString(2, password);
 
@@ -35,7 +26,7 @@ public class DBUser implements DBConnector {
 
             //STEP 5: Clean-up environment
             stmt.close();
-            conn.close();
+            getConnection().close();
         } catch (SQLException se) {
             //Handle errors for JDBC
             se.printStackTrace();
@@ -49,7 +40,7 @@ public class DBUser implements DBConnector {
             } catch (SQLException se2) {
             }// nothing we can do
             try {
-                if (conn != null) conn.close();
+                if (getConnection() != null) getConnection().close();
             } catch (SQLException se) {
                 se.printStackTrace();
             }//end finally try
@@ -57,21 +48,11 @@ public class DBUser implements DBConnector {
     }
 
     public Set<Account> readUserData() {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-
         try {
-            //STEP 1: Register JDBC driver
-            Class.forName("com.mysql.jdbc.Driver");
-
-            //STEP 2: Open a connection
-            System.out.println("Connecting to user database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-
             //STEP 3: Execute a query
             System.out.println("Creating statement...");
             String sql = "SELECT * FROM accounts";
-            stmt = conn.prepareStatement(sql);
+            stmt = getConnection().prepareStatement(sql);
 
             ResultSet rs = stmt.executeQuery(sql);
 
@@ -90,7 +71,7 @@ public class DBUser implements DBConnector {
             //STEP 5: Clean-up environment
             rs.close();
             stmt.close();
-            conn.close();
+            getConnection().close();
             return setOfAcounts;
         } catch (SQLException se) {
             //Handle errors for JDBC
@@ -105,7 +86,7 @@ public class DBUser implements DBConnector {
             } catch (SQLException se2) {
             }// nothing we can do
             try {
-                if (conn != null) conn.close();
+                if (getConnection() != null) getConnection().close();
             } catch (SQLException se) {
                 se.printStackTrace();
             }//end finally try

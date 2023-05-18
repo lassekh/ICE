@@ -8,26 +8,20 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class DBRecipe implements DBConnector {
-    private Connection conn = null;
-    private PreparedStatement stmt = null;
+public class DBRecipe extends DBConnector {
 
     public void saveRecipe(Recipe recipe) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Connecting to account database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-
             System.out.println("Creating statement...");
             String query = "INSERT INTO created_recipes VALUES (null,?,?,?,?)"; //null because first column is id.
-            stmt = conn.prepareStatement(query);
+            stmt = getConnection().prepareStatement(query);
             stmt.setString(1, recipe.getTitle()); //right  now only save recipe with title
             stmt.setString(2, recipe.getDescription());
             stmt.setInt(3, recipe.getPrepTime());
             stmt.setInt(4, recipe.getCookTime());
             stmt.execute();
             stmt.close();
-            conn.close();
+            getConnection().close();
         } catch (SQLException se) {
             //Handle errors for JDBC
             se.printStackTrace();
@@ -41,7 +35,7 @@ public class DBRecipe implements DBConnector {
             } catch (SQLException se2) {
             }// nothing we can do
             try {
-                if (conn != null) conn.close();
+                if (getConnection() != null) getConnection().close();
             } catch (SQLException se) {
                 se.printStackTrace();
             }//end finally try
@@ -50,13 +44,10 @@ public class DBRecipe implements DBConnector {
 
     public Set<Recipe> readRecipes() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Connecting to account database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             System.out.println("Creating statement...");
             String query = "SELECT * FROM recipes";
-            stmt = conn.prepareStatement(query);
+            stmt = getConnection().prepareStatement(query);
             ResultSet rs = stmt.executeQuery(query);
             Set<Recipe> setOfRecipes = new HashSet<>();
 
@@ -82,7 +73,7 @@ public class DBRecipe implements DBConnector {
             }
             rs.close();
             stmt.close();
-            conn.close();
+            getConnection().close();
             return setOfRecipes;
         } catch (SQLException se) {
             //Handle errors for JDBC
@@ -97,7 +88,7 @@ public class DBRecipe implements DBConnector {
             } catch (SQLException se2) {
             }// nothing we can do
             try {
-                if (conn != null) conn.close();
+                if (getConnection() != null) getConnection().close();
             } catch (SQLException se) {
                 se.printStackTrace();
             }//end finally try
