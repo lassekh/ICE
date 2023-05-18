@@ -9,8 +9,6 @@ import java.util.Set;
 public class DBUser extends DBConnector {
 
     public void saveUser(String email, String password) {
-
-
         try {
             //STEP 3: Execute a query
             System.out.println("Creating statement...");
@@ -61,12 +59,9 @@ public class DBUser extends DBConnector {
 
             while (rs.next()) {
                 //Retrieve by column name
-
                 String email = rs.getString("email");
                 String password = rs.getString("password");
-
                 setOfAcounts.add(new Account(email, password));
-
             }
             //STEP 5: Clean-up environment
             rs.close();

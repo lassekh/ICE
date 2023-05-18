@@ -5,11 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c434148-7d4f-4408-8276-e2f1d7abe8a8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICE/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ICE/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utility/DBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/DBConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utility/DBIngredients.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/DBIngredients.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utility/DBRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/DBRecipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utility/DBUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/DBUser.java" afterDir="false" />
     </list>
     <list id="1d5b45b3-2fc8-4770-bef6-34d675fe478e" name="Changes by runem" comment="" />
@@ -129,7 +124,7 @@
       <workItem from="1684216369004" duration="10498000" />
       <workItem from="1684303993301" duration="345000" />
       <workItem from="1684304527562" duration="43000" />
-      <workItem from="1684436298565" duration="3004000" />
+      <workItem from="1684436298565" duration="3335000" />
     </task>
     <servers />
   </component>
