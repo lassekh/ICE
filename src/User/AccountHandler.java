@@ -13,8 +13,8 @@ public class AccountHandler {
     }
     public void mainMenu() {
         List<String> mainMenu = new ArrayList<>();
-        mainMenu.add("1) Create a user");
-        mainMenu.add("2) Login");
+        mainMenu.add("Create a user");
+        mainMenu.add("Login");
         int menuChoice = ui.displayMenu(mainMenu);
         boolean inputValidator = true;
         while (inputValidator) {

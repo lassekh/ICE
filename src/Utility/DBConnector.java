@@ -16,7 +16,7 @@ public abstract class DBConnector {
             //STEP 1: Register JDBC driver
             Class.forName("com.mysql.jdbc.Driver");
             //STEP 2: Open a connection
-            System.out.println("Connecting to account database...");
+            //System.out.println("Connecting to account database...");
             return DriverManager.getConnection(DB_URL, USER, PASS);
         } catch (Exception e) {
             e.printStackTrace();
